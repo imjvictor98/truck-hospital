@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -12,6 +13,11 @@ android {
         targetSdk 30
         versionCode 1
         versionName "1.0"
+        resConfigs "pt"
+    }
+
+    buildFeatures {
+        viewBinding true
     }
 
     buildTypes {
@@ -34,10 +40,22 @@ android {
 
 dependencies {
 
+    def androidx_navigation = "2.3.5"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation "androidx.navigation:navigation-fragment-ktx:$androidx_navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$androidx_navigation"
+
+    def firebase_bom = "29.1.0"
+    implementation platform("com.google.firebase:firebase-bom: $firebase_bom")
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx'
+
+    def firebase_auth = "7.2.0"
+    implementation "com.firebaseui:firebase-ui-auth:$firebase_auth"
+
+    def kotlin_coroutines = "1.5.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines"
 }
