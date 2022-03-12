@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "654489329282",
+    "project_id": "truck-hospital",
+    "storage_bucket": "truck-hospital.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654489329282:android:fd3d094859eca9b590de9b",
+        "android_client_info": {
+          "package_name": "br.com.truckhospital"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "654489329282-t5ldugdqhq8grdatmtjuleup9r02ftqo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBB2sjfhbmh9i0tZZ5squSNSpBMDXglbjw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "654489329282-t5ldugdqhq8grdatmtjuleup9r02ftqo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

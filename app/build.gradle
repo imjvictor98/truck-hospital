@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdk 31
 
     defaultConfig {
         applicationId "br.com.truckhospital"
@@ -47,6 +47,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation "androidx.navigation:navigation-fragment-ktx:$androidx_navigation"
     implementation "androidx.navigation:navigation-ui-ktx:$androidx_navigation"
+    implementation "androidx.activity:activity-ktx:1.4.0"
 
     def firebase_bom = "29.1.0"
     implementation platform("com.google.firebase:firebase-bom: $firebase_bom")
