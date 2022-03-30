@@ -2,7 +2,6 @@ package br.com.truckhospital.modules.base
 
 import android.content.Context
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 
 open class BaseActivity<T>: AppCompatActivity(), BaseContract.BaseView {

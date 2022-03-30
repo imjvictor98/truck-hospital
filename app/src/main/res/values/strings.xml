@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Hospital dos caminhões</string>
+
+    <!-- Dialog Util -->
+
+    <string name="dialog_default_error_title">Atenção</string>
+    <string name="dialog_default_error_message">Ocorreu um erro inesperado.\nPor favor, tente novamente mais tarde.</string>
+    <string name="dialog_default_error_btn">OK</string>
 </resources>

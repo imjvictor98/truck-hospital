@@ -3,12 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jvcam/AndroidStudioProjects/truck-hospital/app/src/main/res/drawable-v24/primary_filled_bkg.xml" value="0.229" />
+        <entry key="..\:/Users/jvcam/AndroidStudioProjects/truck-hospital/app/src/main/res/drawable/primary_filled_bkg.xml" value="0.229" />
         <entry key="..\:/Users/jvcam/AndroidStudioProjects/truck-hospital/app/src/main/res/drawable/primary_outline_bkg.xml" value="0.197" />
+        <entry key="..\:/Users/jvcam/AndroidStudioProjects/truck-hospital/app/src/main/res/drawable/primary_outline_edit_text_bkg.xml" value="0.229" />
+        <entry key="..\:/Users/jvcam/AndroidStudioProjects/truck-hospital/app/src/main/res/drawable/secondary_outline_bkg.xml" value="0.229" />
         <entry key="..\:/Users/jvcam/AndroidStudioProjects/truck-hospital/app/src/main/res/font-v26/simplon_bp.xml" value="0.56" />
         <entry key="..\:/Users/jvcam/AndroidStudioProjects/truck-hospital/app/src/main/res/font/simplon_bp.xml" value="0.56" />
         <entry key="..\:/Users/jvcam/AndroidStudioProjects/truck-hospital/app/src/main/res/font/simplonbp.xml" value="0.56" />
-        <entry key="..\:/Users/jvcam/AndroidStudioProjects/truck-hospital/app/src/main/res/layout/activity_login.xml" value="0.2994791666666667" />
+        <entry key="..\:/Users/jvcam/AndroidStudioProjects/truck-hospital/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/jvcam/AndroidStudioProjects/truck-hospital/app/src/main/res/layout/activity_splash.xml" value="0.2994791666666667" />
+        <entry key="..\:/Users/jvcam/AndroidStudioProjects/truck-hospital/app/src/main/res/layout/firebase_ui_auth_phone.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/jvcam/AndroidStudioProjects/truck-hospital/app/src/main/res/layout/fragment_second.xml" value="0.5385416666666667" />
       </map>
     </option>
