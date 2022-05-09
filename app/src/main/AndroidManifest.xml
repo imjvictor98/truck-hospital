@@ -26,6 +26,10 @@
             android:name=".modules.auth.LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.TruckHospital.NoActionBar" />
+        <activity
+            android:name=".modules.confirmation.ConfirmationActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TruckHospital.NoActionBar" />
     </application>
 
 </manifest>

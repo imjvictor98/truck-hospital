@@ -1,27 +1,25 @@
 package br.com.truckhospital.modules.auth
 
-import androidx.appcompat.app.AppCompatActivity
 import br.com.truckhospital.modules.util.PhoneMaskUtil
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import timber.log.Timber
-import java.util.concurrent.TimeUnit
 
 class LoginPresenter(override val view: LoginContract.View?) : LoginContract.Presenter {
 
-    override fun validatePhone(number: String, activity: AppCompatActivity) {
+    override fun validatePhone(
+        countryCode: String,
+        number: String,
+        optionsBuilder: PhoneAuthOptions.Builder
+    ) {
         view?.showCircularLoading()
 
         if (PhoneMaskUtil.isPhoneValid(number)) {
-            val phoneNumber = PhoneMaskUtil.unmask(number)
-
-            val options = PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())
+            val phoneNumber = countryCode.plus(PhoneMaskUtil.unmask(number))
+            val options = optionsBuilder
                 .setPhoneNumber(phoneNumber)
-                .setTimeout(60L, TimeUnit.SECONDS)
-                .setActivity(activity)
                 .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                     override fun onVerificationCompleted(authCredential: PhoneAuthCredential) {
                         Timber.d("onVerificationCompleted: %s", authCredential.smsCode)
@@ -34,18 +32,24 @@ class LoginPresenter(override val view: LoginContract.View?) : LoginContract.Pre
                         view?.showError()
                     }
 
-                    override fun onCodeSent(code: String, token: PhoneAuthProvider.ForceResendingToken) {
+                    override fun onCodeSent(
+                        code: String,
+                        token: PhoneAuthProvider.ForceResendingToken
+                    ) {
+                        Timber.d("onCodeSent: %s", code)
                         super.onCodeSent(code, token)
+                        view?.hideCircularLoading()
                         view?.showVerification()
                     }
-
-                })
-                view?.showVerification()
-
-            //chamar o firebase auth
+                }).build()
+            PhoneAuthProvider.verifyPhoneNumber(options)
         } else {
             view?.hideCircularLoading()
             view?.showError()
         }
+    }
+
+    override fun validateSms(sms: String) {
+
     }
 }

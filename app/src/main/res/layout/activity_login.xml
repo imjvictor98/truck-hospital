@@ -1,250 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ViewFlipper
+<androidx.appcompat.widget.LinearLayoutCompat
     android:id="@+id/firebase_ui_auth_view_flipper"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp"
-        >
+        android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/firebase_ui_auth_phone_country_code"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_weight="0.2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:labelFor="@+id/firebase_ui_auth_phone_country_code_input"
-                android:hint="País"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/firebase_ui_auth_phone_country_code_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="+55"
-                    android:textColor="@color/grey_100"
-                    android:enabled="false"
-                    style="@style/TextInput" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/firebase_ui_auth_phone"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:labelFor="@+id/firebase_ui_auth_phone_input"
-                android:hint="Número de telefone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/TextInput"
-                    android:id="@+id/firebase_ui_auth_phone_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/firebase_ui_auth_phone_country_code"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_weight="0.2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
+            android:layout_marginEnd="16dp"
+            android:labelFor="@+id/firebase_ui_auth_phone_country_code_input"
+            android:hint="País"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/firebase_ui_auth_phone_btn"
-                style="@style/PrimaryButton"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/firebase_ui_auth_phone_country_code_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Confirmar número de telefone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="+55"
+                android:textColor="@color/grey_100"
+                android:enabled="false"
+                style="@style/TextInput" />
 
-            <com.google.android.material.progressindicator.CircularProgressIndicator
-                android:id="@+id/firebase_ui_auth_phone_loading"
-                android:layout_width="wrap_content"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/firebase_ui_auth_phone"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:labelFor="@+id/firebase_ui_auth_phone_input"
+            android:hint="Número de telefone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/TextInput"
+                android:id="@+id/firebase_ui_auth_phone_input"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/firebase_ui_auth_phone_btn"
-                app:layout_constraintStart_toStartOf="@+id/firebase_ui_auth_phone_btn"
-                app:layout_constraintTop_toTopOf="parent"
-                app:trackColor="@color/white_100"
-                app:indicatorColor="@color/yellow_100"
-                android:indeterminate="true"
-                app:indicatorSize="32dp"
+                android:inputType="number"
+                android:maxLines="1"
                 />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <com.google.android.material.divider.MaterialDivider
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/firebase_ui_auth_phone_message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/poppins_regular"
-            android:textColor="@color/grey_100"
-            android:text="Você receberá um SMS para poder validar seu número de telefone."
-            android:textSize="16sp"
-            />
-
+        </com.google.android.material.textfield.TextInputLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="16dp">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/firebase_ui_auth_phone_verification_message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/black_100"
-            android:text="Digite o código enviado por SMS"
-            android:textSize="24sp"
-            />
-
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginTop="16dp">
-
-            <androidx.appcompat.widget.AppCompatEditText
-                style="@style/TextInput"
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                android:layout_weight="1"
-                />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                style="@style/TextInput"
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                android:layout_marginHorizontal="8dp"
-                android:layout_weight="1"
-                />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                style="@style/TextInput"
-                android:layout_width="10dp"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                style="@style/TextInput"
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                android:layout_marginHorizontal="8dp"
-                android:layout_weight="1"
-                />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                style="@style/TextInput"
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                android:layout_marginHorizontal="8dp"
-                android:layout_weight="1"
-                />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
+        android:layout_marginTop="16dp"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/firebase_ui_auth_phone_verification_btn"
+            android:id="@+id/firebase_ui_auth_phone_btn"
             style="@style/PrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Verificar sms"
+            android:text="Confirmar número de telefone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/firebase_ui_auth_phone_verification_loading"
+            android:id="@+id/firebase_ui_auth_phone_loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/firebase_ui_auth_phone_verification_btn"
-            app:layout_constraintStart_toStartOf="@+id/firebase_ui_auth_phone_verification_btn"
+            app:layout_constraintEnd_toEndOf="@+id/firebase_ui_auth_phone_btn"
+            app:layout_constraintStart_toStartOf="@+id/firebase_ui_auth_phone_btn"
             app:layout_constraintTop_toTopOf="parent"
             app:trackColor="@color/white_100"
             app:indicatorColor="@color/yellow_100"
             android:indeterminate="true"
             app:indicatorSize="32dp"
             />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.divider.MaterialDivider
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textColor="#EC8620"
-            android:fontFamily="@font/simplon_bp_bold"
-            android:textSize="18sp"
-            android:drawableEnd="@drawable/ic_send_plane"
-            android:drawableTint="#EC8620"
-            android:textAlignment="textStart"
-            android:textAllCaps="false"
-            android:text="Enviar SMS novamente"
-            />
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/firebase_ui_auth_phone_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/grey_100"
+        android:text="Você receberá um SMS para poder validar seu número de telefone."
+        android:textSize="16sp"
+        />
 
-</ViewFlipper>
-
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,19 +1,18 @@
 package br.com.truckhospital.modules.auth
 
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.ActivityResultCallback
 import br.com.truckhospital.R
 import br.com.truckhospital.databinding.ActivityLoginBinding
 import br.com.truckhospital.modules.base.BaseActivity
+import br.com.truckhospital.modules.confirmation.ConfirmationActivity
 import br.com.truckhospital.modules.util.DialogUtil
+import br.com.truckhospital.modules.util.FirebaseAuthHelper
 import br.com.truckhospital.modules.util.PhoneMaskUtil
 import br.com.truckhospital.modules.util.extension.gone
 import br.com.truckhospital.modules.util.extension.visible
-import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 
 
@@ -31,24 +30,10 @@ class LoginActivity :
 
     private lateinit var binding: ActivityLoginBinding
 
-//    private val signIn = registerForActivityResult(FirebaseAuthUIActivityResultContract(), this)
-//
-//    private fun startSignIn() {
-//        val signInIntent = AuthUI.getInstance()
-//            .createSignInIntentBuilder()
-//            .setTheme(R.style.Theme_TruckHospital)
-//            .setLogo(R.drawable.ic_truck_logo)
-//            .setAvailableProviders(listOf(AuthUI.IdpConfig.PhoneBuilder().build()))
-//            .build()
-//
-////        signIn.launch(signInIntent)
-//    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        startSignIn()
         setPresenter(LoginPresenter(this))
 
         binding.firebaseUiAuthPhoneInput.apply {
@@ -56,7 +41,11 @@ class LoginActivity :
         }
 
         binding.firebaseUiAuthPhoneBtn.setOnClickListener {
-            getPresenter()?.validatePhone(binding.firebaseUiAuthPhoneInput.text.toString(), this)
+            getPresenter()?.validatePhone(
+                binding.firebaseUiAuthPhoneCountryCodeInput.text.toString(),
+                binding.firebaseUiAuthPhoneInput.text.toString(),
+                FirebaseAuthHelper.phoneAuthOptionsBuilder(this)
+            )
         }
     }
 
@@ -85,6 +74,6 @@ class LoginActivity :
     }
 
     override fun showVerification() {
-        binding.firebaseUiAuthViewFlipper.showNext()
+        ConfirmationActivity.start(mContext)
     }
 }
