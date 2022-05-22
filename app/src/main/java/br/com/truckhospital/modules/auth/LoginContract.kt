@@ -8,7 +8,7 @@ class LoginContract {
         fun showCircularLoading()
         fun hideCircularLoading()
         fun showError()
-        fun showVerification()
+        fun showVerification(verificationId: String)
     }
 
     interface Presenter : BaseContract.BasePresenter<View> {
@@ -16,7 +16,5 @@ class LoginContract {
                           number: String,
                           optionsBuilder: PhoneAuthOptions.Builder
         )
-
-        fun validateSms(sms: String)
     }
 }

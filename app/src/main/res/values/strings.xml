@@ -6,4 +6,12 @@
     <string name="dialog_default_error_title">Atenção</string>
     <string name="dialog_default_error_message">Ocorreu um erro inesperado.\nPor favor, tente novamente mais tarde.</string>
     <string name="dialog_default_error_btn">OK</string>
+
+    <!-- SMS -->
+    <string name="sms_hint">000000</string>
+    <string name="sms_snack_bar">O SMS foi enviado para o número informado.</string>
+
+    <!-- Toolbar -->
+    <string name="toolbar_login_activity">Entrar</string>
+    <string name="toolbar_confirmation_activity">Confirmar SMS</string>
 </resources>

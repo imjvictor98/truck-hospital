@@ -1,9 +1,12 @@
 package br.com.truckhospital.modules.auth
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.result.ActivityResultCallback
+import androidx.core.content.ContextCompat
 import br.com.truckhospital.R
 import br.com.truckhospital.databinding.ActivityLoginBinding
 import br.com.truckhospital.modules.base.BaseActivity
@@ -11,6 +14,7 @@ import br.com.truckhospital.modules.confirmation.ConfirmationActivity
 import br.com.truckhospital.modules.util.DialogUtil
 import br.com.truckhospital.modules.util.FirebaseAuthHelper
 import br.com.truckhospital.modules.util.PhoneMaskUtil
+import br.com.truckhospital.modules.util.SnackBarUtil.showSnackBar
 import br.com.truckhospital.modules.util.extension.gone
 import br.com.truckhospital.modules.util.extension.visible
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
@@ -34,6 +38,8 @@ class LoginActivity :
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.activityLoginToolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setPresenter(LoginPresenter(this))
 
         binding.firebaseUiAuthPhoneInput.apply {
@@ -50,7 +56,13 @@ class LoginActivity :
     }
 
     override fun onActivityResult(result: FirebaseAuthUIAuthenticationResult?) {
-        //Result of authentication
+        when (result?.resultCode) {
+            Activity.RESULT_OK -> {
+                binding.root.showSnackBar(getString(R.string.sms_snack_bar))
+            } else -> {
+                showError()
+            }
+        }
     }
 
     override fun showCircularLoading() {
@@ -73,7 +85,7 @@ class LoginActivity :
         )
     }
 
-    override fun showVerification() {
-        ConfirmationActivity.start(mContext)
+    override fun showVerification(verificationId: String) {
+        ConfirmationActivity.start(mContext, verificationId)
     }
 }

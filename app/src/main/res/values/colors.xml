@@ -3,12 +3,14 @@
     <color name="yellow_100">#FFF06E</color>
 
     <color name="white_100">#FFFFFF</color>
+    <color name="white_translucent">#4DFFFFFF</color>
 
     <color name="green_100">#6EFFA8</color>
     <color name="green_300">#0ACF83</color>
 
     <color name="grey_100">#6A6D73</color>
     <color name="grey_300">#4A4E51</color>
+    <color name="grey">#94999E</color>
 
     <color name="black_100">#18191B</color>
     <color name="black_300">#000000</color>

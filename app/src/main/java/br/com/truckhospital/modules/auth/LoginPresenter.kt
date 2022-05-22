@@ -39,7 +39,7 @@ class LoginPresenter(override val view: LoginContract.View?) : LoginContract.Pre
                         Timber.d("onCodeSent: %s", code)
                         super.onCodeSent(code, token)
                         view?.hideCircularLoading()
-                        view?.showVerification()
+                        view?.showVerification(code)
                     }
                 }).build()
             PhoneAuthProvider.verifyPhoneNumber(options)
@@ -47,9 +47,5 @@ class LoginPresenter(override val view: LoginContract.View?) : LoginContract.Pre
             view?.hideCircularLoading()
             view?.showError()
         }
-    }
-
-    override fun validateSms(sms: String) {
-
     }
 }
