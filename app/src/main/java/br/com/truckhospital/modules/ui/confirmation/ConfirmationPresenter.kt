@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.confirmation
+package br.com.truckhospital.modules.ui.confirmation
 
 
 import br.com.truckhospital.modules.util.FirebaseAuthHelper
@@ -21,14 +21,13 @@ class ConfirmationPresenter(override val view: ConfirmationContract.View?) :
 
                 it.result?.user?.run {
                     Timber.d("Confirmation SMS is successfull")
-                    //update UI go to home activity
+                    view?.goToHome()
                 }
 
             } else {
                 Timber.e(it.exception, "signInWithCredential Error")
                 if (it.exception is FirebaseAuthInvalidCredentialsException) {
                     Timber.d("Confirmation SMS is errored")
-                    // The verification code entered was invalid
                     view?.showDialogError("SMS informado é inválido")
                     view?.hideLoading()
                     view?.showButton()

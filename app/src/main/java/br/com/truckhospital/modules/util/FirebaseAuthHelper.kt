@@ -7,6 +7,8 @@ import com.google.firebase.auth.PhoneAuthProvider
 import java.util.concurrent.TimeUnit
 
 object FirebaseAuthHelper {
+    val userAuth get() = FirebaseAuth.getInstance()
+
     fun phoneAuthOptionsBuilder(activity: Activity) = PhoneAuthOptions
         .newBuilder(FirebaseAuth.getInstance())
         .setTimeout(60L, TimeUnit.SECONDS)

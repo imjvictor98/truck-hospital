@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.base
+package br.com.truckhospital.modules.ui.base
 
 import android.content.Context
 import android.os.Bundle

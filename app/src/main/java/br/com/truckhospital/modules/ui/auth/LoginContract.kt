@@ -1,6 +1,6 @@
-package br.com.truckhospital.modules.auth
+package br.com.truckhospital.modules.ui.auth
 
-import br.com.truckhospital.modules.base.BaseContract
+import br.com.truckhospital.modules.ui.base.BaseContract
 import com.google.firebase.auth.PhoneAuthOptions
 
 class LoginContract {

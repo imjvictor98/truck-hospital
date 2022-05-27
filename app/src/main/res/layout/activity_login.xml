@@ -60,6 +60,9 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:nextFocusDown="@id/firebase_ui_auth_phone_btn"
+                android:nextFocusForward="@id/firebase_ui_auth_phone_btn"
                 />
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -75,6 +78,8 @@
             style="@style/PrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:imeActionLabel="@id/firebase_ui_auth_phone_input"
+            android:imeOptions="actionDone"
             android:text="Confirmar número de telefone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.confirmation
+package br.com.truckhospital.modules.ui.confirmation
 
 import android.content.Context
 import android.content.Intent
@@ -6,7 +6,8 @@ import android.os.Bundle
 import androidx.core.view.isVisible
 import br.com.truckhospital.R
 import br.com.truckhospital.databinding.ActivityConfirmationBinding
-import br.com.truckhospital.modules.base.BaseActivity
+import br.com.truckhospital.modules.ui.base.BaseActivity
+import br.com.truckhospital.modules.ui.home.main.MainActivity
 import br.com.truckhospital.modules.util.DialogUtil
 
 class ConfirmationActivity:
@@ -65,5 +66,10 @@ class ConfirmationActivity:
             positiveText = getString(R.string.dialog_default_error_btn),
             positiveCallback = { dialog, _ -> dialog.dismiss() }
         )
+    }
+
+    override fun goToHome() {
+        MainActivity.start(mContext)
+        finish()
     }
 }

@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.auth
+package br.com.truckhospital.modules.ui.auth
 
 import br.com.truckhospital.modules.util.PhoneMaskUtil
 import com.google.firebase.FirebaseException

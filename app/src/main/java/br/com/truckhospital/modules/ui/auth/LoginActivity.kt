@@ -1,16 +1,14 @@
-package br.com.truckhospital.modules.auth
+package br.com.truckhospital.modules.ui.auth
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.activity.result.ActivityResultCallback
-import androidx.core.content.ContextCompat
 import br.com.truckhospital.R
 import br.com.truckhospital.databinding.ActivityLoginBinding
-import br.com.truckhospital.modules.base.BaseActivity
-import br.com.truckhospital.modules.confirmation.ConfirmationActivity
+import br.com.truckhospital.modules.ui.base.BaseActivity
+import br.com.truckhospital.modules.ui.confirmation.ConfirmationActivity
 import br.com.truckhospital.modules.util.DialogUtil
 import br.com.truckhospital.modules.util.FirebaseAuthHelper
 import br.com.truckhospital.modules.util.PhoneMaskUtil

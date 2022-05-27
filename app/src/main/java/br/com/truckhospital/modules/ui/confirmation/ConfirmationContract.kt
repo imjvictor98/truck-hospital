@@ -1,6 +1,6 @@
-package br.com.truckhospital.modules.confirmation
+package br.com.truckhospital.modules.ui.confirmation
 
-import br.com.truckhospital.modules.base.BaseContract
+import br.com.truckhospital.modules.ui.base.BaseContract
 
 class ConfirmationContract {
 
@@ -12,6 +12,8 @@ class ConfirmationContract {
         fun hideLoading()
 
         fun showDialogError(message: String? = null)
+
+        fun goToHome()
     }
 
     interface Presenter: BaseContract.BasePresenter<View> {

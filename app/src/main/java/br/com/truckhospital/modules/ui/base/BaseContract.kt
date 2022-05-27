@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.base
+package br.com.truckhospital.modules.ui.base
 
 interface BaseContract {
     interface BaseView
