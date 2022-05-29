@@ -8,6 +8,7 @@
 
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="toolbarStyle">@style/Toolbar</item>
     </style>
 
     <style name="Theme.TruckHospital.NoActionBar">
@@ -65,8 +66,6 @@
         <item name="titleTextColor">@color/white_100</item>
         <item name="subtitleTextColor">@color/white_translucent</item>
         <item name="android:minHeight">?android:attr/actionBarSize</item>
-        <item name="android:navigationIcon">@drawable/md_nav_back</item>
-        <item name="navigationIcon">@drawable/md_nav_back</item>
         <item name="android:layout_height">?android:actionBarSize</item>
         <item name="titleTextAppearance">@style/ToolbarTitleTextAppearance</item>
         <item name="subtitleTextAppearance">@style/ToolbarSubTitleAppearance</item>

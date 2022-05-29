@@ -31,6 +31,7 @@ class ConfirmationActivity:
 
         binding = ActivityConfirmationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setCustomActionBar(binding.activityLoginToolbar, R.drawable.md_nav_back)
         setPresenter(ConfirmationPresenter(this))
 
         intent?.extras?.apply {

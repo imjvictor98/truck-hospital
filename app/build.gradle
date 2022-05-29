@@ -49,36 +49,41 @@ android {
 dependencies {
 
     def androidx_navigation = "2.4.2"
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.6.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation "androidx.navigation:navigation-fragment-ktx:$androidx_navigation"
-    implementation "androidx.navigation:navigation-ui-ktx:$androidx_navigation"
-    implementation "androidx.activity:activity-ktx:1.4.0"
+    implementation('androidx.core:core-ktx:1.7.0')
+    implementation('androidx.appcompat:appcompat:1.4.1')
+    implementation('com.google.android.material:material:1.6.0')
+    implementation('androidx.constraintlayout:constraintlayout:2.1.4')
+    implementation("androidx.navigation:navigation-fragment-ktx:$androidx_navigation")
+    implementation("androidx.navigation:navigation-ui-ktx:$androidx_navigation")
+    implementation("androidx.activity:activity-ktx:1.4.0")
 
     def firebase_bom = "29.1.0"
-    implementation platform("com.google.firebase:firebase-bom: $firebase_bom")
-    implementation 'com.google.firebase:firebase-analytics-ktx'
-    implementation 'com.google.firebase:firebase-auth-ktx'
-    implementation 'com.google.firebase:firebase-database-ktx'
+    implementation(
+            platform("com.google.firebase:firebase-bom: $firebase_bom")
+    )
+    implementation('com.google.firebase:firebase-analytics-ktx')
+    implementation('com.google.firebase:firebase-auth-ktx')
+    implementation('com.google.firebase:firebase-database-ktx')
 
     def firebase_ui = "8.0.0"
-    implementation "com.firebaseui:firebase-ui-auth:$firebase_ui"
-    implementation "com.firebaseui:firebase-ui-database:$firebase_ui"
-    implementation "com.firebaseui:firebase-ui-firestore:$firebase_ui"
-    implementation "com.firebaseui:firebase-ui-storage:$firebase_ui"
+    implementation("com.firebaseui:firebase-ui-auth:$firebase_ui")
+    implementation("com.firebaseui:firebase-ui-database:$firebase_ui")
+    implementation("com.firebaseui:firebase-ui-firestore:$firebase_ui")
+    implementation("com.firebaseui:firebase-ui-storage:$firebase_ui")
 
     def kotlin_coroutines = "1.6.0"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines")
 
     def material_dialog = "3.3.0"
-    implementation "com.afollestad.material-dialogs:core:$material_dialog"
-    implementation "com.afollestad.material-dialogs:input:$material_dialog"
+    implementation("com.afollestad.material-dialogs:core:$material_dialog")
+    implementation("com.afollestad.material-dialogs:input:$material_dialog")
 
     def multiDex = "2.0.1"
-    implementation "androidx.multidex:multidex:$multiDex"
+    implementation("androidx.multidex:multidex:$multiDex")
 
     def timber = "5.0.1"
-    implementation "com.jakewharton.timber:timber:$timber"
+    implementation("com.jakewharton.timber:timber:$timber")
+
+    def dots = "4.3"
+    implementation("com.tbuonomo:dotsindicator:$dots")
 }

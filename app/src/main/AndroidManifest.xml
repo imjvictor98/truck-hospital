@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TruckHospital">
+
         <activity
             android:name="br.com.truckhospital.modules.ui.splash.SplashActivity"
             android:exported="true"
@@ -34,6 +35,10 @@
             android:name=".modules.ui.home.main.MainActivity"
             android:exported="false"
             android:theme="@style/Theme.TruckHospital.NoActionBar" />
+        <activity
+            android:name=".modules.ui.order.OrderActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TruckHospital.NoActionBar"/>
     </application>
 
 </manifest>

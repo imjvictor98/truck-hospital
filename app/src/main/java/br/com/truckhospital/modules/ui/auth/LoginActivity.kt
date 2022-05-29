@@ -12,8 +12,8 @@ import br.com.truckhospital.modules.ui.confirmation.ConfirmationActivity
 import br.com.truckhospital.modules.util.DialogUtil
 import br.com.truckhospital.modules.util.FirebaseAuthHelper
 import br.com.truckhospital.modules.util.PhoneMaskUtil
-import br.com.truckhospital.modules.util.SnackBarUtil.showSnackBar
 import br.com.truckhospital.modules.util.extension.gone
+import br.com.truckhospital.modules.util.extension.showSnackBar
 import br.com.truckhospital.modules.util.extension.visible
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 
@@ -36,8 +36,7 @@ class LoginActivity :
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.activityLoginToolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        setCustomActionBar(binding.activityLoginToolbar, R.drawable.md_nav_back)
         setPresenter(LoginPresenter(this))
 
         binding.firebaseUiAuthPhoneInput.apply {

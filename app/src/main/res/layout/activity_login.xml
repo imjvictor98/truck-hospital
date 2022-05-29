@@ -11,8 +11,7 @@
         android:id="@+id/activity_login_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="@string/toolbar_login_activity"
-        style="@style/Toolbar" />
+        app:title="@string/toolbar_login_activity" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"

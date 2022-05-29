@@ -1,6 +1,7 @@
 package br.com.truckhospital.modules.util
 
 import android.app.Activity
+import android.content.Context
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
@@ -16,5 +17,4 @@ object FirebaseAuthHelper {
 
     fun getCredentialSMS(verificationId: String, smsCode: String) = PhoneAuthProvider
         .getCredential(verificationId, smsCode)
-
 }

@@ -5,10 +5,14 @@ import br.com.truckhospital.modules.ui.base.BaseContract
 
 class MainContract {
     interface View: BaseContract.BaseView {
-        fun foo()
+        fun goToOrder()
+
+        fun goToSplash()
     }
 
     interface Presenter: BaseContract.BasePresenter<View> {
-        fun foo(list: List<Order>)
+        fun onCardClicked()
+
+        fun signOut()
     }
 }
