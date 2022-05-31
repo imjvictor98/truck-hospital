@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import br.com.truckhospital.databinding.ActivitySplashBinding
 import br.com.truckhospital.modules.ui.auth.LoginActivity
-import br.com.truckhospital.modules.ui.base.BaseActivity
+import br.com.truckhospital.modules.ui.base.activity.BaseActivity
 import br.com.truckhospital.modules.ui.home.main.MainActivity
 
 class SplashActivity : BaseActivity<SplashContract.Presenter>(), SplashContract.View {

@@ -1,13 +1,13 @@
 package br.com.truckhospital.modules.ui.order
 
-import br.com.truckhospital.modules.ui.base.BaseContract
+import br.com.truckhospital.modules.ui.base.activity.BaseActivityContract
 
-class OrderContract: BaseContract {
-    interface View : BaseContract.BaseView {
+class OrderContract: BaseActivityContract {
+    interface View : BaseActivityContract.BaseView {
 
     }
 
-    interface Presenter : BaseContract.BasePresenter<View>{
+    interface Presenter : BaseActivityContract.BasePresenter<View>{
 
     }
 }

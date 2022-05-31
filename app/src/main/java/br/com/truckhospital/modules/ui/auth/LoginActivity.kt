@@ -7,7 +7,7 @@ import android.os.Bundle
 import androidx.activity.result.ActivityResultCallback
 import br.com.truckhospital.R
 import br.com.truckhospital.databinding.ActivityLoginBinding
-import br.com.truckhospital.modules.ui.base.BaseActivity
+import br.com.truckhospital.modules.ui.base.activity.BaseActivity
 import br.com.truckhospital.modules.ui.confirmation.ConfirmationActivity
 import br.com.truckhospital.modules.util.DialogUtil
 import br.com.truckhospital.modules.util.FirebaseAuthHelper
@@ -36,7 +36,11 @@ class LoginActivity :
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setCustomActionBar(binding.activityLoginToolbar, R.drawable.md_nav_back)
+        setSupportActionBar(binding.activityLoginToolbar)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.md_nav_back)
+        }
         setPresenter(LoginPresenter(this))
 
         binding.firebaseUiAuthPhoneInput.apply {

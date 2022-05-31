@@ -3,6 +3,7 @@ package br.com.truckhospital.modules.ui.home.main
 import br.com.truckhospital.modules.core.database.RealTimeDataBase
 import br.com.truckhospital.modules.core.database.RepositoryImpl
 import br.com.truckhospital.modules.core.model.Order
+import br.com.truckhospital.modules.util.FirebaseAuthHelper
 import com.google.firebase.auth.FirebaseAuth
 
 class MainPresenter(override val view: MainContract.View?): MainContract.Presenter {

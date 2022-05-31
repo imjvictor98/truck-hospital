@@ -46,10 +46,17 @@
     </style>
 
     <style name="TextInput" parent="Widget.AppCompat.EditText">
-        <item name="android:fontFamily">@font/simplon_bp_regular</item>
-        <item name="fontFamily">@font/simplon_bp_regular</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/primary</item>
         <item name="android:textColorHint">@color/grey_300</item>
+        <item name="android:textSize">14sp</item>
+        <item name="hintTextAppearance">@style/HintTextAppearance</item>
+    </style>
+
+    <style name="HintTextAppearance" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:fontFamily">@font/simplon_bp_medium</item>
+        <item name="fontFamily">@font/simplon_bp_medium</item>
     </style>
 
     <style name="SMSEditText" parent="Widget.AppCompat.EditText">
@@ -62,26 +69,24 @@
 
     <style name="Toolbar" parent="Widget.AppCompat.Toolbar">
         <item name="android:background">@color/black_300</item>
-        <item name="android:elevation">4dp</item>
         <item name="titleTextColor">@color/white_100</item>
-        <item name="subtitleTextColor">@color/white_translucent</item>
-        <item name="android:minHeight">?android:attr/actionBarSize</item>
-        <item name="android:layout_height">?android:actionBarSize</item>
+        <item name="subtitleTextColor">@color/white_300</item>
         <item name="titleTextAppearance">@style/ToolbarTitleTextAppearance</item>
         <item name="subtitleTextAppearance">@style/ToolbarSubTitleAppearance</item>
         <item name="android:padding">8dp</item>
     </style>
 
     <style name="ToolbarTitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:fontFamily">@font/simplon_bp_medium</item>
-        <item name="fontFamily">@font/simplon_bp_medium</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">20sp</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="ToolbarSubTitleAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
-        <item name="android:fontFamily">@font/simplon_bp_medium</item>
-        <item name="fontFamily">@font/simplon_bp_medium</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">12sp</item>
     </style>
 </resources>

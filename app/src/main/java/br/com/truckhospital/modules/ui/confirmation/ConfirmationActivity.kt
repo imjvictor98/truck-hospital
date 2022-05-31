@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.core.view.isVisible
 import br.com.truckhospital.R
 import br.com.truckhospital.databinding.ActivityConfirmationBinding
-import br.com.truckhospital.modules.ui.base.BaseActivity
+import br.com.truckhospital.modules.ui.base.activity.BaseActivity
 import br.com.truckhospital.modules.ui.home.main.MainActivity
 import br.com.truckhospital.modules.util.DialogUtil
 
@@ -31,7 +31,11 @@ class ConfirmationActivity:
 
         binding = ActivityConfirmationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setCustomActionBar(binding.activityLoginToolbar, R.drawable.md_nav_back)
+        setSupportActionBar(binding.activityLoginToolbar)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.md_nav_back)
+        }
         setPresenter(ConfirmationPresenter(this))
 
         intent?.extras?.apply {

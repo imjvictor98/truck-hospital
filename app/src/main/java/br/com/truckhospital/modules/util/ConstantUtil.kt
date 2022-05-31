@@ -1,0 +1,5 @@
+package br.com.truckhospital.modules.util
+
+const val EDIT_TEXT_MASK_CPF = "[000].[000].[000]-[00]"
+const val EDIT_TEXT_MASK_CEP = "[00000]-[000]"
+const val EDIT_TEXT_MASK_PHONE_NUMBER = "[00] [00000] [0000]"

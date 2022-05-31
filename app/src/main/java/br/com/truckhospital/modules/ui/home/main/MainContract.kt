@@ -1,16 +1,15 @@
 package br.com.truckhospital.modules.ui.home.main
 
-import br.com.truckhospital.modules.core.model.Order
-import br.com.truckhospital.modules.ui.base.BaseContract
+import br.com.truckhospital.modules.ui.base.activity.BaseActivityContract
 
 class MainContract {
-    interface View: BaseContract.BaseView {
+    interface View: BaseActivityContract.BaseView {
         fun goToOrder()
 
         fun goToSplash()
     }
 
-    interface Presenter: BaseContract.BasePresenter<View> {
+    interface Presenter: BaseActivityContract.BasePresenter<View> {
         fun onCardClicked()
 
         fun signOut()

@@ -2,21 +2,18 @@ package br.com.truckhospital.modules.ui.home.main
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.telephony.PhoneNumberUtils
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import br.com.truckhospital.R
 import br.com.truckhospital.databinding.ActivityMainBinding
-import br.com.truckhospital.modules.core.model.Client
-import br.com.truckhospital.modules.core.model.Complaint
-import br.com.truckhospital.modules.core.model.Order
-import br.com.truckhospital.modules.core.model.Vehicle
-import br.com.truckhospital.modules.ui.base.BaseActivity
+import br.com.truckhospital.modules.ui.base.activity.BaseActivity
 import br.com.truckhospital.modules.ui.order.OrderActivity
 import br.com.truckhospital.modules.ui.splash.SplashActivity
+import br.com.truckhospital.modules.util.FirebaseAuthHelper
 
 class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
     companion object {
@@ -32,7 +29,11 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setPresenter(MainPresenter(this))
-        setCustomActionBar(binding.activityMainToolbar)
+        setSupportActionBar(binding.activityMainToolbar)
+        supportActionBar?.apply {
+            val removeCountryCoded = PhoneNumberUtils.formatNumber(FirebaseAuthHelper.userAuth.currentUser?.phoneNumber, "55").removePrefix("+55")
+            subtitle = removeCountryCoded
+        }
         binding.activityMainCardNewOrder.setOnClickListener {
             getPresenter()?.onCardClicked()
         }

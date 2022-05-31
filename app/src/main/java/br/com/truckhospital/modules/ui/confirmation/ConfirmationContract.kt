@@ -1,10 +1,10 @@
 package br.com.truckhospital.modules.ui.confirmation
 
-import br.com.truckhospital.modules.ui.base.BaseContract
+import br.com.truckhospital.modules.ui.base.activity.BaseActivityContract
 
 class ConfirmationContract {
 
-    interface View: BaseContract.BaseView {
+    interface View: BaseActivityContract.BaseView {
         fun showButton()
         fun hideButton()
 
@@ -16,7 +16,7 @@ class ConfirmationContract {
         fun goToHome()
     }
 
-    interface Presenter: BaseContract.BasePresenter<View> {
+    interface Presenter: BaseActivityContract.BasePresenter<View> {
         fun validateSms(verificationId: String, smsCode: String)
     }
 }

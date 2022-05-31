@@ -38,7 +38,8 @@
         <activity
             android:name=".modules.ui.order.OrderActivity"
             android:exported="false"
-            android:theme="@style/Theme.TruckHospital.NoActionBar"/>
+            android:theme="@style/Theme.TruckHospital.NoActionBar"
+            android:parentActivityName=".modules.ui.home.main.MainActivity"/>
     </application>
 
 </manifest>

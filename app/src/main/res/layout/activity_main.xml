@@ -34,7 +34,7 @@
             app:cardUseCompatPadding="true"
             android:clickable="true"
             android:focusable="true"
-            android:background="?attr/selectableItemBackground">
+            android:foreground="?attr/selectableItemBackground">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -52,7 +52,6 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/comp_menu_order_bs_title"
-                    style="Text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
