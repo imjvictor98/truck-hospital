@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:src="@drawable/ic_truck_logo"
-        app:layout_constraintBottom_toTopOf="@+id/splash_login_btn"
+        app:layout_constraintBottom_toTopOf="@+id/splash_login_loading"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,20 +26,22 @@
         android:text="Hospital\ndos\ncaminhões"
         android:textColor="@color/primary"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/splash_login_btn"
+        app:layout_constraintBottom_toTopOf="@+id/splash_login_loading"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/splash_logo"
         app:layout_constraintTop_toBottomOf="@+id/splash_logo" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/splash_login_btn"
-        style="@style/SecondaryButton"
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/splash_login_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Entrar"
-        android:background="@drawable/secondary_outline_bkg"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        app:indicatorColor="@color/black_100"
+        app:indicatorSize="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:trackColor="@color/white_100" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

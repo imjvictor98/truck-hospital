@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.ui.auth
+package br.com.truckhospital.modules.ui.login
 
 import br.com.truckhospital.modules.ui.base.activity.BaseActivityContract
 import com.google.firebase.auth.PhoneAuthOptions

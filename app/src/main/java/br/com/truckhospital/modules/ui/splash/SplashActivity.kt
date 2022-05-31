@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import br.com.truckhospital.databinding.ActivitySplashBinding
-import br.com.truckhospital.modules.ui.auth.LoginActivity
+import br.com.truckhospital.modules.ui.login.LoginActivity
 import br.com.truckhospital.modules.ui.base.activity.BaseActivity
 import br.com.truckhospital.modules.ui.home.main.MainActivity
 
@@ -25,13 +25,7 @@ class SplashActivity : BaseActivity<SplashContract.Presenter>(), SplashContract.
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setPresenter(SplashPresenter(this))
-        getPresenter()?.init()
-    }
-
-    override fun onButtonBehavior() {
-        binding.splashLoginBtn.setOnClickListener {
-            getPresenter()?.checkUser()
-        }
+        getPresenter()?.checkUser()
     }
 
     override fun goToHome() {
@@ -42,5 +36,13 @@ class SplashActivity : BaseActivity<SplashContract.Presenter>(), SplashContract.
     override fun goToLogin() {
         LoginActivity.start(mContext)
         finish()
+    }
+
+    override fun showLoading() {
+        binding.splashLoginLoading.show()
+    }
+
+    override fun hideLoading() {
+        binding.splashLoginLoading.hide()
     }
 }

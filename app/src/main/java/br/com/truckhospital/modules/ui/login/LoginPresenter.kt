@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.ui.auth
+package br.com.truckhospital.modules.ui.login
 
 import br.com.truckhospital.modules.util.PhoneMaskUtil
 import com.google.firebase.FirebaseException
@@ -16,7 +16,7 @@ class LoginPresenter(override val view: LoginContract.View?) : LoginContract.Pre
     ) {
         view?.showCircularLoading()
 
-        if (PhoneMaskUtil.isPhoneValid(number)) {
+        if (PhoneMaskUtil.unmask(number).length >= 11) {
             val phoneNumber = countryCode.plus(PhoneMaskUtil.unmask(number))
             val options = optionsBuilder
                 .setPhoneNumber(phoneNumber)

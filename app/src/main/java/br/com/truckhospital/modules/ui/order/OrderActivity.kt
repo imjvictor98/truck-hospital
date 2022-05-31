@@ -1,33 +1,39 @@
 package br.com.truckhospital.modules.ui.order
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import br.com.truckhospital.databinding.ActivityOrderBinding
+import br.com.truckhospital.modules.core.model.Client
+import br.com.truckhospital.modules.core.model.Complaint
+import br.com.truckhospital.modules.core.model.Vehicle
 import br.com.truckhospital.modules.ui.base.activity.BaseActivity
 import br.com.truckhospital.modules.ui.order.client.ClientFragment
 import br.com.truckhospital.modules.ui.order.description.DescriptionFragment
 import br.com.truckhospital.modules.ui.order.vehicle.VehicleFragment
+import br.com.truckhospital.modules.util.DialogUtil
 import br.com.truckhospital.modules.util.PageTransformerUtil
+import br.com.truckhospital.modules.util.extension.installOnPageSelected
 
 class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.View {
     companion object {
+        private val pages = listOf(
+            Pair(OrderPageEnum.ORDER_PAGE_CLIENT, ClientFragment()),
+            Pair(OrderPageEnum.ORDER_PAGE_VEHICLE, VehicleFragment()),
+            Pair(OrderPageEnum.ORDER_PAGE_COMPLAIN, DescriptionFragment()),
+            Pair(OrderPageEnum.ORDER_PAGE_SERVICE, DescriptionFragment()),
+            Pair(OrderPageEnum.ORDER_PAGE_BUDGET, ClientFragment())
+        )
+
         fun start(context: Context) {
             context.startActivity(Intent(context, OrderActivity::class.java))
         }
     }
 
-
-    private val pages = listOf(
-        Pair(OrderPageEnum.ORDER_PAGE_CLIENT, ClientFragment()),
-        Pair(OrderPageEnum.ORDER_PAGE_VEHICLE, VehicleFragment()),
-        Pair(OrderPageEnum.ORDER_PAGE_COMPLAIN, DescriptionFragment()),
-        Pair(OrderPageEnum.ORDER_PAGE_SERVICE, DescriptionFragment()),
-        Pair(OrderPageEnum.ORDER_PAGE_BUDGET, ClientFragment())
-    )
     private lateinit var binding: ActivityOrderBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,19 +42,54 @@ class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.Vie
         setContentView(binding.root)
         setSupportActionBar(binding.activityOrderToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        setupViewPager2()
+        setPresenter(OrderPresenter(this))
+    }
+
+    override fun onBackPressed() {
+        if (binding.activityOrderViewPager.currentItem == 0) {
+            showDialog()
+        } else {
+            binding.activityOrderViewPager.apply {
+                setCurrentItem(currentItem - 1, true)
+            }
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return false
+    }
+
+    fun goForward() {
+        if (binding.activityOrderViewPager.currentItem >= 0) {
+            binding.activityOrderViewPager.currentItem += 1
+        }
+    }
+
+    fun setClient(client: Client) {
+        getPresenter()?.setClient(client)
+    }
+
+    fun setVehicle(vehicle: Vehicle) {
+        getPresenter()?.setVehicle(vehicle)
+    }
+
+    fun setDescription(complaint: Complaint) {
+        getPresenter()?.setComplain(complaint)
+    }
+
+    private fun setupViewPager2() {
         binding.activityOrderViewPager.apply {
             adapter = OrderSliderAdapter()
+            isUserInputEnabled = false
             binding.activityOrderDotsIndicator.attachTo(this)
             setPageTransformer(PageTransformerUtil.ZoomOutPageTransformer())
             offscreenPageLimit = pages.size
-            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    supportActionBar?.title = pages[position].first.title
-                    super.onPageSelected(position)
-                }
-            })
+            installOnPageSelected { position ->
+                supportActionBar?.title = pages[position].first.title
+            }
         }
-        setPresenter(OrderPresenter(this))
     }
 
     inner class OrderSliderAdapter : FragmentStateAdapter(this@OrderActivity) {
@@ -63,5 +104,21 @@ class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.Vie
         ORDER_PAGE_COMPLAIN("Reclamação"),
         ORDER_PAGE_SERVICE("Serviço"),
         ORDER_PAGE_BUDGET("Total de Gastos")
+    }
+
+    override fun showDialog() {
+        DialogUtil.showDialog(
+            mContext,
+            title = "Sair",
+            message = "Quer mesmo descartar as alterações e sair?",
+            positiveText = "Sim",
+            positiveCallback = { _, _ ->
+                super.onBackPressed()
+            },
+            negativeText = "Não",
+            negativeCallback = { dialog, _ ->
+                dialog.dismiss()
+            }
+        )
     }
 }

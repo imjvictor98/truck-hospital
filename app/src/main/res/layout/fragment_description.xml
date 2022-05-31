@@ -16,12 +16,12 @@
         app:boxStrokeWidth="2dp"
         app:boxStrokeColor="@color/primary"
         android:layout_marginBottom="8dp"
-        android:labelFor="@id/fragment_client_cpf"
+        android:labelFor="@id/fragment_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fragment_client_cpf"
+            android:id="@+id/fragment_description"
             style="@style/TextInput"
             android:gravity="top"
             android:layout_width="match_parent"

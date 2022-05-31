@@ -18,15 +18,20 @@
         <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1525" />
         <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/drawable/ic_add.xml" value="0.1525" />
         <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1525" />
+        <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/drawable/selector_primary_button.xml" value="0.203" />
+        <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/font-v26/font_poppins.xml" value="0.37592592592592594" />
+        <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/font/font_poppins.xml" value="0.37592592592592594" />
+        <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/font/font_simplon_bp.xml" value="0.37592592592592594" />
         <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/layout/activity_confirmation.xml" value="0.358695652173913" />
-        <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/layout/activity_order.xml" value="0.23550724637681159" />
+        <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/layout/activity_splash.xml" value="0.36231884057971014" />
         <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/layout/comp_menu_order_bottom_sheet.xml" value="0.33" />
         <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/layout/fragment_client.xml" value="0.33" />
         <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/layout/fragment_description.xml" value="0.36231884057971014" />
         <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/layout/fragment_order.xml" value="0.33" />
-        <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/layout/fragment_vehicle.xml" value="0.36231884057971014" />
+        <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/layout/fragment_vehicle.xml" value="0.33" />
         <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/layout/toolbar.xml" value="0.3605072463768116" />
         <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/menu/activity_main_menu.xml" value="0.33" />
         <entry key="..\:/projetos_android/meu_github/truck-hospital/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1525" />

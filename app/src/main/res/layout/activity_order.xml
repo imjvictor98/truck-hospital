@@ -23,21 +23,10 @@
             android:id="@+id/activity_order_view_pager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/activity_order_fab"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/activity_order_dots_indicator"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_order_toolbar" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/activity_order_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="24dp"
-            android:src="@drawable/ic_arrow_right"
-            app:backgroundTint="@color/yellow_100"
-            app:layout_constraintBottom_toTopOf="@+id/activity_order_dots_indicator"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="contentDescription" />
 
         <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
             android:id="@+id/activity_order_dots_indicator"

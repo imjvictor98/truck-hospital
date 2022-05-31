@@ -4,6 +4,7 @@
 
     <color name="white_100">#FFFFFF</color>
     <color name="white_300">#e6e6e6</color>
+    <color name="white_600">#c6c6c6</color>
     <color name="white_translucent">#4DFFFFFF</color>
 
     <color name="green_100">#6EFFA8</color>

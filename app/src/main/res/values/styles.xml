@@ -24,7 +24,7 @@
     <style name="PrimaryButton" parent="Widget.AppCompat.Button">
         <item name="fontFamily">@font/simplon_bp_bold</item>
         <item name="android:foreground">?android:attr/selectableItemBackground</item>
-        <item name="backgroundTint">@color/accent</item>
+        <item name="android:background">@drawable/selector_primary_button</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:width">170dp</item>
         <item name="android:height">52dp</item>
@@ -45,18 +45,22 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="TextInputLayoutAppearance" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextAppearance">@style/HintTextAppearance</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="TextInput" parent="Widget.AppCompat.EditText">
-        <item name="android:fontFamily">@font/poppins_regular</item>
-        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="fontFamily">@font/poppins_medium</item>
         <item name="android:textColor">@color/primary</item>
         <item name="android:textColorHint">@color/grey_300</item>
         <item name="android:textSize">14sp</item>
-        <item name="hintTextAppearance">@style/HintTextAppearance</item>
     </style>
 
     <style name="HintTextAppearance" parent="TextAppearance.AppCompat.Caption">
-        <item name="android:fontFamily">@font/simplon_bp_medium</item>
-        <item name="fontFamily">@font/simplon_bp_medium</item>
+        <item name="android:fontFamily">@font/simplon_bp_regular</item>
+        <item name="fontFamily">@font/simplon_bp_regular</item>
     </style>
 
     <style name="SMSEditText" parent="Widget.AppCompat.EditText">

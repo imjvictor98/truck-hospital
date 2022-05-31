@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.ui.auth
+package br.com.truckhospital.modules.ui.login
 
 import android.app.Activity
 import android.content.Context
@@ -10,9 +10,11 @@ import br.com.truckhospital.databinding.ActivityLoginBinding
 import br.com.truckhospital.modules.ui.base.activity.BaseActivity
 import br.com.truckhospital.modules.ui.confirmation.ConfirmationActivity
 import br.com.truckhospital.modules.util.DialogUtil
+import br.com.truckhospital.modules.util.EDIT_TEXT_MASK_PHONE_NUMBER
 import br.com.truckhospital.modules.util.FirebaseAuthHelper
 import br.com.truckhospital.modules.util.PhoneMaskUtil
 import br.com.truckhospital.modules.util.extension.gone
+import br.com.truckhospital.modules.util.extension.installMask
 import br.com.truckhospital.modules.util.extension.showSnackBar
 import br.com.truckhospital.modules.util.extension.visible
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
@@ -37,14 +39,10 @@ class LoginActivity :
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.activityLoginToolbar)
-        supportActionBar?.apply {
-            setDisplayHomeAsUpEnabled(true)
-            setHomeAsUpIndicator(R.drawable.md_nav_back)
-        }
         setPresenter(LoginPresenter(this))
 
-        binding.firebaseUiAuthPhoneInput.apply {
-            addTextChangedListener(PhoneMaskUtil.build(this))
+        binding.firebaseUiAuthPhoneInput.installMask(EDIT_TEXT_MASK_PHONE_NUMBER) { _, extractedValue, _ ->
+            binding.firebaseUiAuthPhoneBtn.isEnabled = extractedValue.length >= 11
         }
 
         binding.firebaseUiAuthPhoneBtn.setOnClickListener {
