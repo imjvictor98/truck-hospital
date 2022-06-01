@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".modules.ui.order.budget.BudgetFragment">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/fragment_budget_form_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:boxStrokeErrorColor="@android:color/holo_red_light"
+            app:errorIconDrawable="@drawable/ic_error_warning_line"
+            app:errorIconTint="@android:color/holo_red_light"
+            android:hint="Mão de Obra"
+            app:prefixTextAppearance="@style/TextInput"
+            app:prefixText="R$"
+            app:prefixTextColor="@color/black_100"
+            app:errorEnabled="true"
+            app:hintTextAppearance="@style/TextInputLayoutAppearance"
+            android:labelFor="@id/fragment_budget_labor_cost"
+            app:boxStrokeColor="@color/primary"
+            app:boxStrokeWidth="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fragment_budget_labor_cost"
+                style="@style/TextInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="1200,00"
+                android:textColor="@color/green_300"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="Peças"
+            app:prefixTextAppearance="@style/TextInput"
+            app:prefixText="R$"
+            app:prefixTextColor="@color/black_100"
+            app:boxStrokeErrorColor="@android:color/holo_red_light"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_error_warning_line"
+            app:errorIconTint="@android:color/holo_red_light"
+            app:hintTextAppearance="@style/TextInputLayoutAppearance"
+            android:labelFor="@id/fragment_budget_parts_cost"
+            app:boxStrokeColor="@color/primary"
+            app:boxStrokeWidth="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fragment_budget_parts_cost"
+                style="@style/TextInput"
+                tools:text="420,00"
+                android:textColor="@color/purple_100"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <ProgressBar
+        android:id="@+id/fragment_budget_indicator"
+        style="@style/VerticalProgressBar.ProgressBar.Vertical"
+        android:layout_width="4dp"
+        android:layout_height="140dp"
+        android:progress="50"
+        app:layout_constraintStart_toStartOf="@id/fragment_budget_form_container"
+        app:layout_constraintTop_toBottomOf="@id/fragment_budget_form_container"
+        app:showAnimationBehavior="none" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fragment_budget_title_labor_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:fontFamily="@font/simplon_bp_bold"
+        android:text="Total Gasto"
+        android:textSize="18sp"
+        android:textColor="@color/grey_300"
+        app:fontFamily="@font/simplon_bp_bold"
+        app:layout_constraintStart_toEndOf="@+id/fragment_budget_indicator"
+        app:layout_constraintTop_toTopOf="@+id/fragment_budget_indicator" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fragment_budget_description_labor_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="16dp"
+        android:fontFamily="@font/simplon_bp_bold"
+        android:textSize="24sp"
+        android:textColor="@color/grey_300"
+        app:fontFamily="@font/simplon_bp_bold"
+        app:layout_constraintStart_toEndOf="@+id/fragment_budget_indicator"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_budget_title_labor_cost"
+        tools:text="R$ 1620,00" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fragment_budget_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:enabled="false"
+        android:src="@drawable/ic_check_line"
+        app:backgroundTint="@color/yellow_100"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_budget_form_container"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_budget_form_container"
+        app:layout_constraintVertical_bias="1"
+        tools:ignore="contentDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

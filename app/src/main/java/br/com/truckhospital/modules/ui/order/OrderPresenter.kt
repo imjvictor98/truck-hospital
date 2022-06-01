@@ -21,4 +21,8 @@ class OrderPresenter(override val view: OrderContract.View?) : OrderContract.Pre
         mOrder = mOrder?.copy(complaint = complaint)
     }
 
+    override fun setService(complaint: Complaint) {
+        mOrder = mOrder?.copy(service = complaint)
+    }
+
 }

@@ -8,8 +8,11 @@ class ClientContract {
         fun setNextButton(value: Boolean)
 
         fun setErrorCNPJ(errorText: String)
+
         fun setErrorCEP(errorText: String)
+
         fun setErrorName(errorText: String)
+
         fun setErrorPhoneNumber(errorText: String)
     }
 
@@ -17,9 +20,13 @@ class ClientContract {
         fun isAllFieldsFilled(): Boolean
 
         fun setValidCNPJ(text: String)
+
         fun setValidCEP(text: String)
+
         fun setValidName(text: String)
+
         fun setValidPhoneNumber(text: String)
+
         fun getClient(cpf: String, cep: String, name: String, number: String): Client
     }
 }

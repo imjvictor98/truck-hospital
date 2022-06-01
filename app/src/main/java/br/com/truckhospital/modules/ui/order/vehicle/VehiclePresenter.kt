@@ -34,7 +34,7 @@ class VehiclePresenter(override val view: VehicleContract.View?) : VehicleContra
         if (mValidModel) {
             view?.setNextButton(isAllFieldsFilled())
         } else {
-            view?.setErrorPlate("Modelo inválido")
+            view?.setErrorModel("Modelo inválido")
         }
     }
 

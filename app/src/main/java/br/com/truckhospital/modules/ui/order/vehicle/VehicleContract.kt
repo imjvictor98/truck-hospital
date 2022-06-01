@@ -8,7 +8,9 @@ class VehicleContract {
         fun setNextButton(value: Boolean)
 
         fun setErrorPlate(errorText: String)
+
         fun setErrorBrand(errorText: String)
+
         fun setErrorModel(errorText: String)
     }
 
@@ -16,8 +18,11 @@ class VehicleContract {
         fun isAllFieldsFilled(): Boolean
 
         fun setValidPlate(text: String)
+
         fun setValidBrand(text: String)
+
         fun setValidModel(text: String)
+
         fun getVehicle(plate: String, brand: String, model: String): Vehicle
     }
 }

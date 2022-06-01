@@ -12,7 +12,11 @@ class OrderContract: BaseActivityContract {
 
     interface Presenter : BaseActivityContract.BasePresenter<View>{
         fun setClient(client: Client)
+
         fun setVehicle(vehicle: Vehicle)
+
         fun setComplain(complaint: Complaint)
+
+        fun setService(complaint: Complaint)
     }
 }

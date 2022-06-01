@@ -1,17 +1,16 @@
 package br.com.truckhospital.modules.ui.order
 
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
 import br.com.truckhospital.databinding.ActivityOrderBinding
 import br.com.truckhospital.modules.core.model.Client
 import br.com.truckhospital.modules.core.model.Complaint
 import br.com.truckhospital.modules.core.model.Vehicle
 import br.com.truckhospital.modules.ui.base.activity.BaseActivity
+import br.com.truckhospital.modules.ui.order.budget.BudgetFragment
 import br.com.truckhospital.modules.ui.order.client.ClientFragment
 import br.com.truckhospital.modules.ui.order.description.DescriptionFragment
 import br.com.truckhospital.modules.ui.order.vehicle.VehicleFragment
@@ -22,11 +21,12 @@ import br.com.truckhospital.modules.util.extension.installOnPageSelected
 class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.View {
     companion object {
         private val pages = listOf(
+            Pair(OrderPageEnum.ORDER_PAGE_BUDGET, BudgetFragment()),
             Pair(OrderPageEnum.ORDER_PAGE_CLIENT, ClientFragment()),
             Pair(OrderPageEnum.ORDER_PAGE_VEHICLE, VehicleFragment()),
-            Pair(OrderPageEnum.ORDER_PAGE_COMPLAIN, DescriptionFragment()),
-            Pair(OrderPageEnum.ORDER_PAGE_SERVICE, DescriptionFragment()),
-            Pair(OrderPageEnum.ORDER_PAGE_BUDGET, ClientFragment())
+            Pair(OrderPageEnum.ORDER_PAGE_COMPLAIN, DescriptionFragment(OrderPageEnum.ORDER_PAGE_COMPLAIN)),
+            Pair(OrderPageEnum.ORDER_PAGE_SERVICE, DescriptionFragment(OrderPageEnum.ORDER_PAGE_SERVICE)),
+            Pair(OrderPageEnum.ORDER_PAGE_BUDGET, BudgetFragment())
         )
 
         fun start(context: Context) {
@@ -77,6 +77,10 @@ class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.Vie
 
     fun setDescription(complaint: Complaint) {
         getPresenter()?.setComplain(complaint)
+    }
+
+    fun setService(complaint: Complaint) {
+        getPresenter()?.setService(complaint)
     }
 
     private fun setupViewPager2() {
