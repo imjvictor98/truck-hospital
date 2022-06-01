@@ -17,8 +17,10 @@ class ClientPresenter(override val view: ClientContract.View?) : ClientContract.
 
     override fun setValidCNPJ(text: String) {
         mValidCNPJ = CNPJUtil.isValid(text)
-        if (mValidCNPJ && text.length >= 14) {
+        if (mValidCNPJ) {
             view?.setNextButton(isAllFieldsFilled())
+        } else {
+            view?.setErrorCNPJ("CNPJ inválido")
         }
     }
 
@@ -26,6 +28,8 @@ class ClientPresenter(override val view: ClientContract.View?) : ClientContract.
         mValidCEP = text.length >= 8
         if (mValidCEP) {
             view?.setNextButton(isAllFieldsFilled())
+        } else {
+            view?.setErrorCEP("CEP inválido")
         }
     }
 
@@ -33,6 +37,8 @@ class ClientPresenter(override val view: ClientContract.View?) : ClientContract.
         mValidName = text.length >= 4
         if (mValidName) {
             view?.setNextButton(isAllFieldsFilled())
+        } else {
+            view?.setErrorName("Nome inválido")
         }
     }
 
@@ -40,6 +46,8 @@ class ClientPresenter(override val view: ClientContract.View?) : ClientContract.
         mValidPhoneNumber = text.length >= 11
         if (mValidPhoneNumber) {
             view?.setNextButton(isAllFieldsFilled())
+        } else {
+            view?.setErrorPhoneNumber("Número inválido")
         }
     }
 

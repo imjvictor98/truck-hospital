@@ -6,6 +6,11 @@ import br.com.truckhospital.modules.ui.base.fragment.BaseFragmentContract
 class ClientContract {
     interface View: BaseFragmentContract.BaseView {
         fun setNextButton(value: Boolean)
+
+        fun setErrorCNPJ(errorText: String)
+        fun setErrorCEP(errorText: String)
+        fun setErrorName(errorText: String)
+        fun setErrorPhoneNumber(errorText: String)
     }
 
     interface Presenter: BaseFragmentContract.BasePresenter<View> {

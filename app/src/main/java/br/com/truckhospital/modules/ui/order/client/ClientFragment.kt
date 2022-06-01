@@ -66,4 +66,20 @@ class ClientFragment : BaseFragment<ClientPresenter>(), ClientContract.View {
     override fun setNextButton(value: Boolean) {
         binding?.fragmentClientFab?.isEnabled = value
     }
+
+    override fun setErrorCNPJ(errorText: String) {
+        binding?.fragmentClientCnpj?.error = errorText
+    }
+
+    override fun setErrorCEP(errorText: String) {
+        binding?.fragmentClientCep?.error = errorText
+    }
+
+    override fun setErrorName(errorText: String) {
+        binding?.fragmentClientName?.error = errorText
+    }
+
+    override fun setErrorPhoneNumber(errorText: String) {
+        binding?.fragmentClientNumber?.error = errorText
+    }
 }
