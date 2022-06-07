@@ -2,11 +2,10 @@ package br.com.truckhospital.modules.ui.order.client
 
 import br.com.truckhospital.modules.core.model.Client
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragmentContract
+import br.com.truckhospital.modules.ui.order.OrderBase
 
 class ClientContract {
-    interface View: BaseFragmentContract.BaseView {
-        fun setNextButton(value: Boolean)
-
+    interface View: BaseFragmentContract.BaseView, OrderBase.View {
         fun setErrorCNPJ(errorText: String)
 
         fun setErrorCEP(errorText: String)
@@ -16,9 +15,7 @@ class ClientContract {
         fun setErrorPhoneNumber(errorText: String)
     }
 
-    interface Presenter: BaseFragmentContract.BasePresenter<View> {
-        fun isAllFieldsFilled(): Boolean
-
+    interface Presenter: BaseFragmentContract.BasePresenter<View>,  OrderBase.Presenter {
         fun setValidCNPJ(text: String)
 
         fun setValidCEP(text: String)

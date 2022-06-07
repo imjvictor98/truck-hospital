@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 
-open class BaseFragment<T> : Fragment(), BaseFragmentContract.BaseView {
+open class BaseFragment<T>() : Fragment(), BaseFragmentContract.BaseView {
     lateinit var mContext: Context
     private var mPresenter: BaseFragmentContract.BasePresenter<out BaseFragmentContract.BaseView>? = null
 

@@ -30,12 +30,10 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
         setContentView(binding.root)
         setPresenter(MainPresenter(this))
         setSupportActionBar(binding.activityMainToolbar)
+        getPresenter()?.createList()
         supportActionBar?.apply {
             val removeCountryCoded = PhoneNumberUtils.formatNumber(FirebaseAuthHelper.userAuth.currentUser?.phoneNumber, "55").removePrefix("+55")
             subtitle = removeCountryCoded
-        }
-        binding.activityMainCardNewOrder.setOnClickListener {
-            getPresenter()?.onCardClicked()
         }
     }
 
@@ -68,5 +66,13 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
     override fun goToSplash() {
         SplashActivity.startClearTask(mContext)
         finish()
+    }
+
+    override fun setMenuListAdapter(list: List<Pair<String, Int>>) {
+        binding.activityMainList.adapter = MainActionListAdapter(list, object : MainActionListAdapter.MainActionMenuListener {
+            override fun onClick() {
+                OrderActivity.start(mContext)
+            }
+        })
     }
 }

@@ -1,5 +1,6 @@
 package br.com.truckhospital.modules.ui.order
 
+import br.com.truckhospital.modules.core.model.Budget
 import br.com.truckhospital.modules.core.model.Client
 import br.com.truckhospital.modules.core.model.Complaint
 import br.com.truckhospital.modules.core.model.Vehicle
@@ -18,5 +19,7 @@ class OrderContract: BaseActivityContract {
         fun setComplain(complaint: Complaint)
 
         fun setService(complaint: Complaint)
+
+        fun setBudget(budget: Budget)
     }
 }

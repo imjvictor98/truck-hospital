@@ -1,5 +1,6 @@
 package br.com.truckhospital.modules.ui.home.main
 
+import br.com.truckhospital.R
 import br.com.truckhospital.modules.core.database.RealTimeDataBase
 import br.com.truckhospital.modules.core.database.RepositoryImpl
 import br.com.truckhospital.modules.core.model.Order
@@ -16,5 +17,13 @@ class MainPresenter(override val view: MainContract.View?): MainContract.Present
     override fun signOut() {
         FirebaseAuth.getInstance().signOut()
         view?.goToSplash()
+    }
+
+    override fun createList() {
+        view?.setMenuListAdapter(
+            listOf(
+                Pair("Nova ordem", R.drawable.ic_new_order)
+            )
+        )
     }
 }

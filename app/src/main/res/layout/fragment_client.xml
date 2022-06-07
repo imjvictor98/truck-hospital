@@ -25,7 +25,6 @@
             app:errorIconDrawable="@drawable/ic_error_warning_line"
             app:errorIconTint="@android:color/holo_red_light"
             android:hint="CNPJ"
-            app:errorEnabled="true"
             app:hintTextAppearance="@style/TextInputLayoutAppearance"
             android:labelFor="@id/fragment_client_cnpj"
             app:boxStrokeColor="@color/primary"
@@ -51,7 +50,6 @@
             android:layout_marginBottom="8dp"
             android:hint="Nome"
             app:boxStrokeErrorColor="@android:color/holo_red_light"
-            app:errorEnabled="true"
             app:errorIconDrawable="@drawable/ic_error_warning_line"
             app:errorIconTint="@android:color/holo_red_light"
             app:hintTextAppearance="@style/TextInputLayoutAppearance"
@@ -64,6 +62,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/fragment_client_name"
                 style="@style/TextInput"
+                android:text="Joao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
@@ -76,7 +75,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:hint="Telefone"
-            app:errorEnabled="true"
             app:boxStrokeErrorColor="@android:color/holo_red_light"
             app:errorIconDrawable="@drawable/ic_error_warning_line"
             app:errorIconTint="@android:color/holo_red_light"
@@ -93,6 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:digits="0123456789 -.()"
+                android:text="(61) 99682-4634"
                 android:imeOptions="actionNext"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -105,7 +104,6 @@
             android:hint="CEP"
             app:errorIconDrawable="@drawable/ic_error_warning_line"
             app:errorIconTint="@android:color/holo_red_light"
-            app:errorEnabled="true"
             app:hintTextAppearance="@style/TextInputLayoutAppearance"
             android:labelFor="@id/fragment_client_cep"
             app:boxStrokeColor="@color/primary"
@@ -118,6 +116,7 @@
                 style="@style/TextInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="72311-405"
                 android:digits="0123456789 -.()"
                 android:imeOptions="actionDone"
                 android:inputType="number" />

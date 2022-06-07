@@ -41,10 +41,11 @@
                 style="@style/TextInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="1200,00"
+                android:text="1200,00"
                 android:textColor="@color/green_300"
                 android:imeOptions="actionNext"
-                android:inputType="numberDecimal" />
+                android:inputType="number"
+                android:digits="0123456789 ,."/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -56,10 +57,6 @@
             app:prefixTextAppearance="@style/TextInput"
             app:prefixText="R$"
             app:prefixTextColor="@color/black_100"
-            app:boxStrokeErrorColor="@android:color/holo_red_light"
-            app:errorEnabled="true"
-            app:errorIconDrawable="@drawable/ic_error_warning_line"
-            app:errorIconTint="@android:color/holo_red_light"
             app:hintTextAppearance="@style/TextInputLayoutAppearance"
             android:labelFor="@id/fragment_budget_parts_cost"
             app:boxStrokeColor="@color/primary"
@@ -70,51 +67,45 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/fragment_budget_parts_cost"
                 style="@style/TextInput"
-                tools:text="420,00"
+                android:text="420,00"
                 android:textColor="@color/purple_100"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionDone"
-                android:inputType="numberDecimal" />
+                android:imeActionLabel="@+id/fragment_budget_fab"
+                android:labelFor="@+id/fragment_budget_fab"
+                android:inputType="number"
+                android:digits="0123456789 ,."/>
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <ProgressBar
-        android:id="@+id/fragment_budget_indicator"
-        style="@style/VerticalProgressBar.ProgressBar.Vertical"
-        android:layout_width="4dp"
-        android:layout_height="140dp"
-        android:progress="50"
-        app:layout_constraintStart_toStartOf="@id/fragment_budget_form_container"
-        app:layout_constraintTop_toBottomOf="@id/fragment_budget_form_container"
-        app:showAnimationBehavior="none" />
-
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/fragment_budget_title_labor_cost"
+        android:id="@+id/fragment_budget_title_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/simplon_bp_bold"
         android:text="Total Gasto"
-        android:textSize="18sp"
         android:textColor="@color/grey_300"
+        android:textSize="18sp"
         app:fontFamily="@font/simplon_bp_bold"
-        app:layout_constraintStart_toEndOf="@+id/fragment_budget_indicator"
-        app:layout_constraintTop_toTopOf="@+id/fragment_budget_indicator" />
+        app:layout_constraintStart_toStartOf="@+id/fragment_budget_form_container"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_budget_form_container" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/fragment_budget_description_labor_cost"
+        android:id="@+id/fragment_budget_value_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="2dp"
         android:fontFamily="@font/simplon_bp_bold"
-        android:textSize="24sp"
         android:textColor="@color/grey_300"
+        android:textSize="24sp"
         app:fontFamily="@font/simplon_bp_bold"
-        app:layout_constraintStart_toEndOf="@+id/fragment_budget_indicator"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_budget_title_labor_cost"
+        app:layout_constraintStart_toStartOf="@+id/fragment_budget_title_cost"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_budget_title_cost"
         tools:text="R$ 1620,00" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

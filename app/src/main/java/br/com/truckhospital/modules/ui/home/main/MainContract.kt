@@ -7,11 +7,15 @@ class MainContract {
         fun goToOrder()
 
         fun goToSplash()
+
+        fun setMenuListAdapter(list: List<Pair<String, Int>>)
     }
 
     interface Presenter: BaseActivityContract.BasePresenter<View> {
         fun onCardClicked()
 
         fun signOut()
+
+        fun createList()
     }
 }

@@ -3,9 +3,9 @@ package br.com.truckhospital.modules.ui.order
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import br.com.truckhospital.databinding.ActivityOrderBinding
+import br.com.truckhospital.modules.core.model.Budget
 import br.com.truckhospital.modules.core.model.Client
 import br.com.truckhospital.modules.core.model.Complaint
 import br.com.truckhospital.modules.core.model.Vehicle
@@ -21,12 +21,11 @@ import br.com.truckhospital.modules.util.extension.installOnPageSelected
 class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.View {
     companion object {
         private val pages = listOf(
-            Pair(OrderPageEnum.ORDER_PAGE_BUDGET, BudgetFragment()),
-            Pair(OrderPageEnum.ORDER_PAGE_CLIENT, ClientFragment()),
-            Pair(OrderPageEnum.ORDER_PAGE_VEHICLE, VehicleFragment()),
-            Pair(OrderPageEnum.ORDER_PAGE_COMPLAIN, DescriptionFragment(OrderPageEnum.ORDER_PAGE_COMPLAIN)),
-            Pair(OrderPageEnum.ORDER_PAGE_SERVICE, DescriptionFragment(OrderPageEnum.ORDER_PAGE_SERVICE)),
-            Pair(OrderPageEnum.ORDER_PAGE_BUDGET, BudgetFragment())
+            OrderPageEnum.ORDER_PAGE_CLIENT,
+            OrderPageEnum.ORDER_PAGE_VEHICLE,
+            OrderPageEnum.ORDER_PAGE_COMPLAIN,
+            OrderPageEnum.ORDER_PAGE_SERVICE,
+            OrderPageEnum.ORDER_PAGE_BUDGET
         )
 
         fun start(context: Context) {
@@ -83,6 +82,10 @@ class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.Vie
         getPresenter()?.setService(complaint)
     }
 
+    fun setBudget(budget: Budget) {
+        getPresenter()?.setBudget(budget)
+    }
+
     private fun setupViewPager2() {
         binding.activityOrderViewPager.apply {
             adapter = OrderSliderAdapter()
@@ -91,7 +94,7 @@ class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.Vie
             setPageTransformer(PageTransformerUtil.ZoomOutPageTransformer())
             offscreenPageLimit = pages.size
             installOnPageSelected { position ->
-                supportActionBar?.title = pages[position].first.title
+                supportActionBar?.title = pages[position].title
             }
         }
     }
@@ -99,7 +102,12 @@ class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.Vie
     inner class OrderSliderAdapter : FragmentStateAdapter(this@OrderActivity) {
         override fun getItemCount() = pages.size
 
-        override fun createFragment(position: Int): Fragment = pages[position].second
+        override fun createFragment(position: Int) = when(pages[position]) {
+            OrderPageEnum.ORDER_PAGE_CLIENT -> ClientFragment()
+            OrderPageEnum.ORDER_PAGE_VEHICLE -> VehicleFragment()
+            OrderPageEnum.ORDER_PAGE_BUDGET -> BudgetFragment()
+            else -> DescriptionFragment(pages[position])
+        }
     }
 
     enum class OrderPageEnum(val title: String) {
@@ -114,7 +122,7 @@ class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.Vie
         DialogUtil.showDialog(
             mContext,
             title = "Sair",
-            message = "Quer mesmo descartar as alterações e sair?",
+            message = "Descartar as alterações e sair?",
             positiveText = "Sim",
             positiveCallback = { _, _ ->
                 super.onBackPressed()

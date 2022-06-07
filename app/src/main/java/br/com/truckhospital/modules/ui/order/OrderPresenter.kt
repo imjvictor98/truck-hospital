@@ -1,9 +1,6 @@
 package br.com.truckhospital.modules.ui.order
 
-import br.com.truckhospital.modules.core.model.Client
-import br.com.truckhospital.modules.core.model.Complaint
-import br.com.truckhospital.modules.core.model.Order
-import br.com.truckhospital.modules.core.model.Vehicle
+import br.com.truckhospital.modules.core.model.*
 
 class OrderPresenter(override val view: OrderContract.View?) : OrderContract.Presenter {
 
@@ -23,6 +20,10 @@ class OrderPresenter(override val view: OrderContract.View?) : OrderContract.Pre
 
     override fun setService(complaint: Complaint) {
         mOrder = mOrder?.copy(service = complaint)
+    }
+
+    override fun setBudget(budget: Budget) {
+        mOrder = mOrder?.copy(budget = budget)
     }
 
 }

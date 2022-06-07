@@ -8,7 +8,7 @@ import br.com.truckhospital.databinding.FragmentDescriptionBinding
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragment
 import br.com.truckhospital.modules.ui.order.OrderActivity
 
-class DescriptionFragment constructor(val type: OrderActivity.OrderPageEnum):
+class DescriptionFragment constructor(private val type: OrderActivity.OrderPageEnum):
     BaseFragment<DescriptionContract.Presenter>(), DescriptionContract.View {
 
     private var binding: FragmentDescriptionBinding? = null
