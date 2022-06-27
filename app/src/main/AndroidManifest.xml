@@ -23,23 +23,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="br.com.truckhospital.modules.ui.login.LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.TruckHospital.NoActionBar" />
+
         <activity
             android:name="br.com.truckhospital.modules.ui.confirmation.ConfirmationActivity"
             android:exported="false"
             android:theme="@style/Theme.TruckHospital.NoActionBar" />
+
         <activity
             android:name=".modules.ui.home.main.MainActivity"
             android:exported="false"
             android:theme="@style/Theme.TruckHospital.NoActionBar" />
+
         <activity
             android:name=".modules.ui.order.OrderActivity"
             android:exported="false"
-            android:theme="@style/Theme.TruckHospital.NoActionBar"
-            android:parentActivityName=".modules.ui.home.main.MainActivity"/>
+            android:parentActivityName=".modules.ui.home.main.MainActivity"
+            android:theme="@style/Theme.TruckHospital.NoActionBar" />
+
+        <activity
+            android:name=".modules.ui.success.SuccessActivity"
+            android:exported="false"
+            android:parentActivityName=".modules.ui.home.main.MainActivity"
+            android:theme="@style/Theme.TruckHospital.NoActionBar" />
+
     </application>
 
 </manifest>

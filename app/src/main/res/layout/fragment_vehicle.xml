@@ -35,7 +35,6 @@
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
                 android:inputType="text"
-                android:text="PAZ-8080"
                 android:textAllCaps="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,7 +53,6 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/fragment_vehicle_brand"
                 style="@style/TextInput"
-                android:text="Mercedes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
@@ -76,7 +74,6 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/fragment_vehicle_model"
                 style="@style/TextInput"
-                android:text="C180"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionDone"

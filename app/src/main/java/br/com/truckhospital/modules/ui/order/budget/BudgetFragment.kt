@@ -5,14 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.setFragmentResultListener
 import br.com.truckhospital.databinding.FragmentBudgetBinding
+import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragment
 import br.com.truckhospital.modules.ui.order.OrderActivity
+import br.com.truckhospital.modules.ui.order.description.DescriptionFragment
 import br.com.truckhospital.modules.util.extension.addDecimalInputFilter
+import br.com.truckhospital.modules.util.extension.gone
+import br.com.truckhospital.modules.util.extension.invisible
+import br.com.truckhospital.modules.util.extension.visible
+import timber.log.Timber
+import java.util.*
 
 class BudgetFragment : BaseFragment<BudgetContract.Presenter>(), BudgetContract.View {
     private var binding: FragmentBudgetBinding? = null
     private var activity: OrderActivity? = null
+    private var mOrder: Order? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentBudgetBinding.inflate(layoutInflater, container, false)
@@ -24,6 +33,15 @@ class BudgetFragment : BaseFragment<BudgetContract.Presenter>(), BudgetContract.
     override fun onResume() {
         setNextButton(getPresenter()?.isAllFieldsFilled() == true)
         super.onResume()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setFragmentResultListener(DescriptionFragment.REQUEST_EXTRA_SERVICE) { _, bundle ->
+            mOrder = bundle.getSerializable(DescriptionFragment.EXTRA_SERVICE) as? Order
+            Timber.d("Test SFR (Budget) coming from service: %s", mOrder?.service?.description)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,8 +68,11 @@ class BudgetFragment : BaseFragment<BudgetContract.Presenter>(), BudgetContract.
                 binding?.fragmentBudgetLaborCost?.text.toString(),
                 binding?.fragmentBudgetPartsCost?.text.toString()
             )?.let {
-                activity?.setBudget(it)
-                activity?.goForward()
+                if (mOrder != null) {
+                    activity?.finishForm(mOrder!!.copy(orderId = UUID.randomUUID().toString(), budget = it))
+                }
+//              hideDoneButton()
+//              showLoading()
             }
         }
     }
@@ -66,5 +87,21 @@ class BudgetFragment : BaseFragment<BudgetContract.Presenter>(), BudgetContract.
 
     override fun setErrorLaborCost(errorText: String) {
         binding?.fragmentBudgetLaborCost?.error = errorText
+    }
+
+    override fun showLoading() {
+        binding?.fragmentBudgetFabLoading?.visible()
+    }
+
+    override fun hideLoading() {
+        binding?.fragmentBudgetFabLoading?.gone()
+    }
+
+    override fun showDoneButton() {
+        binding?.fragmentBudgetFab?.visible()
+    }
+
+    override fun hideDoneButton() {
+        binding?.fragmentBudgetFab?.invisible()
     }
 }

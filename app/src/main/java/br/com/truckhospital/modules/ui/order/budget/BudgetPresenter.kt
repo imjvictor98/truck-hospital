@@ -35,15 +35,22 @@ class BudgetPresenter(override val view: BudgetContract.View?) : BudgetContract.
             val numberFormat = NumberFormat.getCurrencyInstance(MainApplication.localeBRL).apply {
                 maximumFractionDigits = 2
             }
-            val totalCost = laborCost + partsCost
-            view?.setTotalCost(numberFormat.format(totalCost))
+            view?.setTotalCost(numberFormat.format(laborCost + partsCost))
         } else {
             view?.setTotalCost("")
         }
     }
 
-    override fun getBudget(laborCost: String, partsCost: String): Budget {
-        return Budget(0F, 0F, 0F)
+    override fun getBudget(labor: String, parts: String): Budget {
+        val laborCost = labor
+            .replace(",", ".")
+            .toDouble()
+
+        val partsCost = parts
+            .replace(",", ".")
+            .toDouble()
+
+        return Budget(laborCost, partsCost, laborCost + partsCost)
     }
 
 }

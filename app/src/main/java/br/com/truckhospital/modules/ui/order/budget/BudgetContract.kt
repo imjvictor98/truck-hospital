@@ -9,6 +9,14 @@ class BudgetContract {
         fun setTotalCost(total: String)
 
         fun setErrorLaborCost(errorText: String)
+
+        fun showLoading()
+
+        fun hideLoading()
+
+        fun showDoneButton()
+
+        fun hideDoneButton()
     }
 
     interface Presenter: BaseFragmentContract.BasePresenter<View>, OrderBase.Presenter {
@@ -16,6 +24,6 @@ class BudgetContract {
 
         fun formatCosts(labor: String, parts: String)
 
-        fun getBudget(laborCost: String, partsCost: String): Budget
+        fun getBudget(labor: String, parts: String): Budget
     }
 }

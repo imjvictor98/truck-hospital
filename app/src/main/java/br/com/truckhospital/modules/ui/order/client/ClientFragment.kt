@@ -4,16 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import br.com.truckhospital.databinding.FragmentClientBinding
+import br.com.truckhospital.modules.core.model.Client
+import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragment
 import br.com.truckhospital.modules.ui.order.OrderActivity
 import br.com.truckhospital.modules.util.EDIT_TEXT_MASK_CEP
 import br.com.truckhospital.modules.util.EDIT_TEXT_MASK_CNPJ
 import br.com.truckhospital.modules.util.EDIT_TEXT_MASK_PHONE_NUMBER
 import br.com.truckhospital.modules.util.extension.installMask
+import br.com.truckhospital.modules.util.pairOf
 
 class ClientFragment : BaseFragment<ClientPresenter>(), ClientContract.View {
+
+    companion object {
+        const val EXTRA_CLIENT = "EXTRA_CLIENT"
+        const val REQUEST_EXTRA_CLIENT = "REQUEST_EXTRA_CLIENT"
+    }
 
     private var binding: FragmentClientBinding? = null
     private var activity: OrderActivity? = null
@@ -59,7 +70,7 @@ class ClientFragment : BaseFragment<ClientPresenter>(), ClientContract.View {
                 binding?.fragmentClientName?.text.toString(),
                 binding?.fragmentClientNumber?.text.toString()
             )?.let {
-                activity?.setClient(it)
+                setFragmentResult(REQUEST_EXTRA_CLIENT, bundleOf(pairOf(EXTRA_CLIENT, Order(client = it))))
                 activity?.goForward()
             }
         }

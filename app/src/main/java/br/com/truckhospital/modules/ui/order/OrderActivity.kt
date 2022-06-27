@@ -3,22 +3,23 @@ package br.com.truckhospital.modules.ui.order
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import br.com.truckhospital.databinding.ActivityOrderBinding
-import br.com.truckhospital.modules.core.model.Budget
-import br.com.truckhospital.modules.core.model.Client
-import br.com.truckhospital.modules.core.model.Complaint
-import br.com.truckhospital.modules.core.model.Vehicle
+import br.com.truckhospital.modules.core.model.*
 import br.com.truckhospital.modules.ui.base.activity.BaseActivity
+import br.com.truckhospital.modules.ui.home.main.MainActivity
 import br.com.truckhospital.modules.ui.order.budget.BudgetFragment
 import br.com.truckhospital.modules.ui.order.client.ClientFragment
 import br.com.truckhospital.modules.ui.order.description.DescriptionFragment
 import br.com.truckhospital.modules.ui.order.vehicle.VehicleFragment
+import br.com.truckhospital.modules.ui.success.SuccessActivity
 import br.com.truckhospital.modules.util.DialogUtil
 import br.com.truckhospital.modules.util.PageTransformerUtil
-import br.com.truckhospital.modules.util.extension.installOnPageSelected
+import br.com.truckhospital.modules.util.extension.onPageSelected
 
 class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.View {
+
     companion object {
         private val pages = listOf(
             OrderPageEnum.ORDER_PAGE_CLIENT,
@@ -66,26 +67,6 @@ class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.Vie
         }
     }
 
-    fun setClient(client: Client) {
-        getPresenter()?.setClient(client)
-    }
-
-    fun setVehicle(vehicle: Vehicle) {
-        getPresenter()?.setVehicle(vehicle)
-    }
-
-    fun setDescription(complaint: Complaint) {
-        getPresenter()?.setComplain(complaint)
-    }
-
-    fun setService(complaint: Complaint) {
-        getPresenter()?.setService(complaint)
-    }
-
-    fun setBudget(budget: Budget) {
-        getPresenter()?.setBudget(budget)
-    }
-
     private fun setupViewPager2() {
         binding.activityOrderViewPager.apply {
             adapter = OrderSliderAdapter()
@@ -93,10 +74,35 @@ class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.Vie
             binding.activityOrderDotsIndicator.attachTo(this)
             setPageTransformer(PageTransformerUtil.ZoomOutPageTransformer())
             offscreenPageLimit = pages.size
-            installOnPageSelected { position ->
+            onPageSelected { position ->
                 supportActionBar?.title = pages[position].title
             }
         }
+    }
+
+    override fun showDialog() {
+        DialogUtil.showDialog(
+            mContext,
+            title = "Sair",
+            message = "Descartar as alterações e sair?",
+            positiveText = "Sim",
+            positiveCallback = { _, _ ->
+                super.onBackPressed()
+            },
+            negativeText = "Não",
+            negativeCallback = { dialog, _ ->
+                dialog.dismiss()
+            }
+        )
+    }
+
+    override fun finishForm(order: Order) {
+        getPresenter()?.createOrder(order)
+    }
+
+    override fun showSuccess(orderId: String) {
+        SuccessActivity.start(mContext, orderId)
+        finish()
     }
 
     inner class OrderSliderAdapter : FragmentStateAdapter(this@OrderActivity) {
@@ -118,19 +124,4 @@ class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.Vie
         ORDER_PAGE_BUDGET("Total de Gastos")
     }
 
-    override fun showDialog() {
-        DialogUtil.showDialog(
-            mContext,
-            title = "Sair",
-            message = "Descartar as alterações e sair?",
-            positiveText = "Sim",
-            positiveCallback = { _, _ ->
-                super.onBackPressed()
-            },
-            negativeText = "Não",
-            negativeCallback = { dialog, _ ->
-                dialog.dismiss()
-            }
-        )
-    }
 }

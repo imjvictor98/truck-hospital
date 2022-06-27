@@ -37,7 +37,6 @@
                 style="@style/TextInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="27.932.734/0005-99"
                 android:digits="0123456789 -./()"
                 android:imeOptions="actionNext"
                 android:inputType="number" />
@@ -62,7 +61,6 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/fragment_client_name"
                 style="@style/TextInput"
-                android:text="Joao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
@@ -91,7 +89,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:digits="0123456789 -.()"
-                android:text="(61) 99682-4634"
                 android:imeOptions="actionNext"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -116,7 +113,6 @@
                 style="@style/TextInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="72311-405"
                 android:digits="0123456789 -.()"
                 android:imeOptions="actionDone"
                 android:inputType="number" />

@@ -21,4 +21,6 @@
     <string name="menu_main_activity_exit">Sair</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="success_activity_title_format">Ordem de serviço %s foi criada!</string>
 </resources>

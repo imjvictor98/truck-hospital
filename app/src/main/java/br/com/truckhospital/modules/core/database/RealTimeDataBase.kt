@@ -5,7 +5,4 @@ import com.google.firebase.ktx.Firebase
 
 object RealTimeDataBase {
     val dataBase get() = Firebase.database
-    fun foo()  {
-
-    }
 }
