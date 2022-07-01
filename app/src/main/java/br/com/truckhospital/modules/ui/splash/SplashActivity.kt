@@ -6,7 +6,7 @@ import android.os.Bundle
 import br.com.truckhospital.databinding.ActivitySplashBinding
 import br.com.truckhospital.modules.ui.login.LoginActivity
 import br.com.truckhospital.modules.ui.base.activity.BaseActivity
-import br.com.truckhospital.modules.ui.home.main.MainActivity
+import br.com.truckhospital.modules.ui.main.MainActivity
 
 class SplashActivity : BaseActivity<SplashContract.Presenter>(), SplashContract.View {
     private lateinit var binding: ActivitySplashBinding

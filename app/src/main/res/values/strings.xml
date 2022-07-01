@@ -23,4 +23,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="success_activity_title_format">Ordem de serviço %s foi criada!</string>
+    <string name="title_home">Início</string>
+    <string name="title_profile">Perfil</string>
 </resources>

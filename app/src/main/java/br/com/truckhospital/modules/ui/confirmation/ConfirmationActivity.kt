@@ -7,7 +7,7 @@ import androidx.core.view.isVisible
 import br.com.truckhospital.R
 import br.com.truckhospital.databinding.ActivityConfirmationBinding
 import br.com.truckhospital.modules.ui.base.activity.BaseActivity
-import br.com.truckhospital.modules.ui.home.main.MainActivity
+import br.com.truckhospital.modules.ui.main.MainActivity
 import br.com.truckhospital.modules.util.DialogUtil
 
 class ConfirmationActivity:

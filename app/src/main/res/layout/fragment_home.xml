@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="16dp"
+    tools:context=".modules.ui.main.home.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_home_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/fragment_home_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:foreground="?attr/selectableItemBackground"
+            android:background="@drawable/avatar_2_raster"
+            app:cardCornerRadius="30dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#465367"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/fragment_home_avatar_image"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/avatar_2_raster"
+                />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/fragment_home_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/simplon_bp_regular"
+            android:text="Bem-vindo de volta"
+            android:textColor="@color/grey_100"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/fragment_home_avatar"
+            app:layout_constraintTop_toTopOf="@+id/fragment_home_avatar" />
+
+        <TextView
+            android:id="@+id/fragment_home_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/simplon_bp_medium"
+            android:textColor="@color/grey_100"
+            android:textSize="16sp"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintBottom_toBottomOf="@+id/fragment_home_avatar"
+            app:layout_constraintEnd_toEndOf="@+id/fragment_home_title"
+            app:layout_constraintStart_toStartOf="@+id/fragment_home_title"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_home_title"
+            tools:text="61 99922-2233" />
+
+        <TextView
+            android:id="@+id/fragment_home_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
+            android:fontFamily="@font/simplon_bp_bold"
+            android:padding="4dp"
+            android:text="@string/menu_main_activity_exit"
+            android:textAllCaps="true"
+            android:textColor="@color/black_100"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fragment_home_avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/fragment_home_budget_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:cardCornerRadius="4dp"
+            app:cardBackgroundColor="#465367"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_home_avatar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_home_budget_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="24dp"
+                >
+
+                <TextView
+                    android:id="@+id/fragment_home_budget_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/simplon_bp_regular"
+                    android:text="Total de Serviços"
+                    android:textColor="#DFE7F4"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/fragment_home_budget_earns"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/simplon_bp_bold"
+                    android:textColor="#FBFBFB"
+                    android:textSize="24sp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_home_budget_title"
+                    android:text="R$ 1.620,00" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fragment_home_percent_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="#1AD9D9D9"
+                    app:cardElevation="0dp"
+                    android:layout_marginTop="16dp"
+                    app:contentPadding="8dp"
+                    app:cardCornerRadius="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_home_budget_earns">
+
+                    <TextView
+                        android:id="@+id/fragment_home_percent_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/simplon_bp_bold"
+                        android:text="+ 15%"
+                        android:paddingHorizontal="8dp"
+                        android:textColor="#70E5CF"
+                        android:textSize="14sp" />
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

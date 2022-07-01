@@ -3,12 +3,10 @@ package br.com.truckhospital.modules.ui.order
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import br.com.truckhospital.databinding.ActivityOrderBinding
 import br.com.truckhospital.modules.core.model.*
 import br.com.truckhospital.modules.ui.base.activity.BaseActivity
-import br.com.truckhospital.modules.ui.home.main.MainActivity
 import br.com.truckhospital.modules.ui.order.budget.BudgetFragment
 import br.com.truckhospital.modules.ui.order.client.ClientFragment
 import br.com.truckhospital.modules.ui.order.description.DescriptionFragment
