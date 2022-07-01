@@ -23,7 +23,7 @@ fun EditText.installMask(
 }
 
 fun EditText.addDecimalInputFilter(decimalDigits: Int) {
-    val decimalInputFilter = InputFilter { source, start, end, dest, dstart, dend ->
+    val decimalInputFilter = InputFilter { source, _, _, dest, _, dEnd ->
         var dotPos = -1
         val len = dest.length
         for (i in 0 until len) {
@@ -40,7 +40,7 @@ fun EditText.addDecimalInputFilter(decimalDigits: Int) {
                 return@InputFilter ""
             }
             // if the text is entered before the dot
-            if (dend <= dotPos) {
+            if (dEnd <= dotPos) {
                 return@InputFilter null
             }
             if (len - dotPos > decimalDigits) {
