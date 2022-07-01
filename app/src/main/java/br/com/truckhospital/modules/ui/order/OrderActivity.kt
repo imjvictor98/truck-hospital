@@ -70,7 +70,7 @@ class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.Vie
             adapter = OrderSliderAdapter()
             isUserInputEnabled = false
             binding.activityOrderDotsIndicator.attachTo(this)
-            setPageTransformer(PageTransformerUtil.ZoomOutPageTransformer())
+            setPageTransformer(PageTransformerUtil.zoomOutPageTransformer)
             offscreenPageLimit = pages.size
             onPageSelected { position ->
                 supportActionBar?.title = pages[position].title

@@ -10,7 +10,7 @@ import br.com.truckhospital.databinding.ActivityLoginBinding
 import br.com.truckhospital.modules.ui.base.activity.BaseActivity
 import br.com.truckhospital.modules.ui.confirmation.ConfirmationActivity
 import br.com.truckhospital.modules.util.DialogUtil
-import br.com.truckhospital.modules.util.EDIT_TEXT_MASK_PHONE_NUMBER
+import br.com.truckhospital.modules.util.ConstantUtil.EDIT_TEXT_MASK_PHONE_NUMBER
 import br.com.truckhospital.modules.util.FirebaseAuthHelper
 import br.com.truckhospital.modules.util.PhoneMaskUtil
 import br.com.truckhospital.modules.util.extension.gone

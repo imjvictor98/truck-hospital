@@ -2,7 +2,7 @@ package br.com.truckhospital.modules.core.repository
 
 import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.util.FirebaseAuthHelper
-import br.com.truckhospital.modules.util.pairOf
+import br.com.truckhospital.modules.util.PairUtil.pairOf
 import com.google.firebase.database.DatabaseReference
 
 class OrderRepositoryImpl(

@@ -12,7 +12,7 @@ import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragment
 import br.com.truckhospital.modules.ui.order.OrderActivity
 import br.com.truckhospital.modules.ui.order.vehicle.VehicleFragment
-import br.com.truckhospital.modules.util.pairOf
+import br.com.truckhospital.modules.util.PairUtil.pairOf
 import timber.log.Timber
 
 class DescriptionFragment constructor(private val type: OrderActivity.OrderPageEnum):

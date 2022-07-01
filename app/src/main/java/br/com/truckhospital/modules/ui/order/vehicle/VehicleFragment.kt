@@ -14,7 +14,7 @@ import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragment
 import br.com.truckhospital.modules.ui.order.OrderActivity
 import br.com.truckhospital.modules.ui.order.client.ClientFragment
-import br.com.truckhospital.modules.util.pairOf
+import br.com.truckhospital.modules.util.PairUtil.pairOf
 import timber.log.Timber
 
 class VehicleFragment: BaseFragment<VehiclePresenter>(), VehicleContract.View {
