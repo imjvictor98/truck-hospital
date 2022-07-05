@@ -2,22 +2,24 @@ package br.com.truckhospital.modules.core.repository
 
 import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.util.FirebaseAuthHelper
-import br.com.truckhospital.modules.util.PairUtil.pairOf
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
 
 class OrderRepositoryImpl(
-    private val database: DatabaseReference
+    private val database: DatabaseReference,
+    private val eventListener: ValueEventListener? = null
 ) : OrderRepositoryContract {
     companion object {
-        private const val ORDERS = "orders"
+        const val ORDERS = "orders"
     }
 
     override fun addOrder(order: Order, onSuccess: () -> Unit) {
-        FirebaseAuthHelper.userAuth.currentUser?.let { firebaseUser ->
+        FirebaseAuthHelper.getUserId()?.let { uid ->
             database
-                .child(firebaseUser.uid)
+                .child(uid)
                 .child(ORDERS)
-                .setValue(mapOf(pairOf(order.orderId, order)))
+                .push()
+                .setValue(order)
                 .addOnSuccessListener { onSuccess() }
         }
     }
@@ -32,5 +34,11 @@ class OrderRepositoryImpl(
 
     override fun getOrders(): List<Order> {
         return emptyList()
+    }
+
+    override fun registerValueEventListener() {
+        eventListener?.run {
+            database.addValueEventListener(this@run)
+        }
     }
 }

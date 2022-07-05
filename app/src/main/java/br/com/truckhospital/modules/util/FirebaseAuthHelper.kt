@@ -17,4 +17,7 @@ object FirebaseAuthHelper {
 
     fun getCredentialSMS(verificationId: String, smsCode: String) = PhoneAuthProvider
         .getCredential(verificationId, smsCode)
+
+    fun getUserId() = userAuth.currentUser?.uid
+
 }

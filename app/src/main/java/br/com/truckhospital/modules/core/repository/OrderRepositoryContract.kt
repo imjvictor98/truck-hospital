@@ -7,4 +7,5 @@ interface OrderRepositoryContract {
     fun updateOrder(orderId: String)
     fun deleteOrder(orderId: String)
     fun getOrders() : List<Order>
+    fun registerValueEventListener()
 }
