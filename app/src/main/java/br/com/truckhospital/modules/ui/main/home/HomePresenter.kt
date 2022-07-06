@@ -29,6 +29,7 @@ class HomePresenter(override val view: HomeContract.View?) : HomeContract.Presen
 
     override fun createListenerForOrderList() {
         FirebaseAuthHelper.getUserId()?.let { uid ->
+            view?.startSkeletonOrderList()
             val listener = object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
 
@@ -39,12 +40,16 @@ class HomePresenter(override val view: HomeContract.View?) : HomeContract.Presen
                     }
 
                     if (orderList.isNotEmpty()) {
+                        view?.stopSkeletonOrderList()
                         view?.setOrdersList(orderList.toListOf())
+                    } else {
+                        view?.stopSkeletonOrderList()
                     }
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
                     Timber.e(databaseError.message, "loadPost:onCancelled", databaseError.toException())
+                    view?.stopSkeletonOrderList()
                 }
             }
             RealTimeDataBase.dataBase.reference.child(uid).child(OrderRepositoryImpl.ORDERS).addValueEventListener(listener)

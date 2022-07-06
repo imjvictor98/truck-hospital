@@ -10,6 +10,10 @@ class HomeContract {
         fun setDescription(text: String)
 
         fun setOrdersList(orders: List<Order>)
+
+        fun startSkeletonOrderList()
+
+        fun stopSkeletonOrderList()
     }
 
     interface Presenter: BaseFragmentContract.BasePresenter<View> {

@@ -92,4 +92,7 @@ dependencies {
 
     def input_mask = "6.0.0"
     implementation("com.redmadrobot:input-mask-android:$input_mask")
+
+    def skeleton_layout = "4.0.0"
+    implementation ("com.faltenreich:skeletonlayout:$skeleton_layout")
 }
