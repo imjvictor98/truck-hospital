@@ -1,5 +1,6 @@
 package br.com.truckhospital.modules.ui.main.home
 
+import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragmentContract
 
 class HomeContract {
@@ -7,11 +8,15 @@ class HomeContract {
         fun goToSplash()
 
         fun setDescription(text: String)
+
+        fun setOrdersList(orders: List<Order>)
     }
 
     interface Presenter: BaseFragmentContract.BasePresenter<View> {
         fun getPhoneNumber()
 
         fun signOut()
+
+        fun createListenerForOrderList()
     }
 }

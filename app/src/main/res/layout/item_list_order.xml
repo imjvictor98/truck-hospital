@@ -17,13 +17,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.card.MaterialCardView
+        <FrameLayout
             android:id="@+id/item_list_order_avatar_card"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:foreground="?attr/selectableItemBackground"
-            app:cardBackgroundColor="@color/yellow_100"
-            app:cardCornerRadius="16dp"
+            android:background="@drawable/shape_rectangular_bkg"
+            android:backgroundTint="@color/yellow_100"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -34,7 +33,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/ic_money"
                 />
-        </com.google.android.material.card.MaterialCardView>
+        </FrameLayout>
 
         <TextView
             android:id="@+id/item_list_order_title"

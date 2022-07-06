@@ -1,8 +1,17 @@
 package br.com.truckhospital.modules.ui.main.home
 
 import android.telephony.PhoneNumberUtils
+import br.com.truckhospital.modules.core.database.RealTimeDataBase
+import br.com.truckhospital.modules.core.model.Order
+import br.com.truckhospital.modules.core.repository.OrderRepositoryImpl
 import br.com.truckhospital.modules.util.FirebaseAuthHelper
+import br.com.truckhospital.modules.util.extension.toListOf
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
+import timber.log.Timber
 
 class HomePresenter(override val view: HomeContract.View?) : HomeContract.Presenter {
     override fun getPhoneNumber() {
@@ -16,5 +25,29 @@ class HomePresenter(override val view: HomeContract.View?) : HomeContract.Presen
     override fun signOut() {
         FirebaseAuth.getInstance().signOut()
         view?.goToSplash()
+    }
+
+    override fun createListenerForOrderList() {
+        FirebaseAuthHelper.getUserId()?.let { uid ->
+            val listener = object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                    val orderList = mutableListOf<Order?>()
+                    dataSnapshot.children.forEach {
+                        val order: Order? = it.getValue<Order>()
+                        orderList.add(order)
+                    }
+
+                    if (orderList.isNotEmpty()) {
+                        view?.setOrdersList(orderList.toListOf())
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Timber.e(databaseError.message, "loadPost:onCancelled", databaseError.toException())
+                }
+            }
+            RealTimeDataBase.dataBase.reference.child(uid).child(OrderRepositoryImpl.ORDERS).addValueEventListener(listener)
+        }
     }
 }

@@ -27,10 +27,10 @@ class HomeOrderAdapter(private val mValues: List<Order>): RecyclerView.Adapter<R
             val order = mValues[position]
             title.text = order.client?.name
             description.text = "04 Julho 2022"
-            NumberFormat.getCurrencyInstance(MainApplication.localeBRL).apply {
+            val numberFormat = NumberFormat.getCurrencyInstance(MainApplication.localeBRL).apply {
                 maximumFractionDigits = 2
-                total.text = this.format(order.budget?.totalCost)
             }
+            total.text = numberFormat.format(order.budget?.totalCost)
         }
     }
 
