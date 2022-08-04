@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.ui.order.description
+package br.com.truckhospital.modules.ui.order.create.description
 
 import br.com.truckhospital.modules.core.model.Complaint
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragmentContract

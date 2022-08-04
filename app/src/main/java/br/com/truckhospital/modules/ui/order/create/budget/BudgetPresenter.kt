@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.ui.order.budget
+package br.com.truckhospital.modules.ui.order.create.budget
 
 import br.com.truckhospital.modules.MainApplication
 import br.com.truckhospital.modules.core.model.Budget

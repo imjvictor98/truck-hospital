@@ -9,12 +9,11 @@ import br.com.truckhospital.databinding.FragmentHomeBinding
 import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragment
 import br.com.truckhospital.modules.ui.main.MainActivity
+import br.com.truckhospital.modules.ui.order.show.ShowOrderActivity
 import br.com.truckhospital.modules.ui.splash.SplashActivity
-import br.com.truckhospital.modules.util.extension.requireOwnerActivity
+import br.com.truckhospital.modules.util.extension.getParentActivity
 import br.com.truckhospital.modules.util.extension.visible
-import com.faltenreich.skeletonlayout.Skeleton
-
-import com.faltenreich.skeletonlayout.applySkeleton
+import com.faltenreich.skeletonlayout.*
 
 class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
 
@@ -23,6 +22,8 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
     private val binding get() = _binding!!
 
     private var mSkeletonOrderList: Skeleton? = null
+
+    private var mSkeletonBudget: Skeleton? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +42,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
         getPresenter()?.createListenerForOrderList()
 
         binding.fragmentHomeAvatar.setOnClickListener {
-            requireOwnerActivity<MainActivity>()?.navigateToProfile()
+            getParentActivity<MainActivity>()?.navigateToProfile()
         }
 
         binding.fragmentHomeExit.setOnClickListener {
@@ -63,7 +64,11 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
     }
 
     override fun setOrdersList(orders: List<Order>) {
-        binding.fragmentHomeOrderRecyclerView.adapter = HomeOrderAdapter(orders)
+        binding.fragmentHomeOrderRecyclerView.adapter = HomeOrderAdapter(orders, object : HomeOrderAdapter.HomeOrderListener {
+            override fun onClick(order: Order) {
+                ShowOrderActivity.start(mContext)
+            }
+        })
     }
 
     override fun startSkeletonOrderList() {
@@ -74,5 +79,19 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
     override fun stopSkeletonOrderList() {
         mSkeletonOrderList?.showOriginal()
         binding.fragmentHomeOrderRecyclerView.visible()
+    }
+
+    override fun startSkeletonBudget() {
+        mSkeletonBudget = binding.fragmentHomeBudgetCardSkeleton
+        mSkeletonBudget?.showSkeleton()
+    }
+
+    override fun stopSkeletonBudget() {
+        mSkeletonBudget?.showOriginal()
+        binding.fragmentHomeBudgetCard.visible()
+    }
+
+    override fun setBudgetEarns(text: String) {
+        binding.fragmentHomeBudgetEarns.text = text
     }
 }

@@ -1,11 +1,11 @@
-package br.com.truckhospital.modules.ui.order.client
+package br.com.truckhospital.modules.ui.order.create.client
 
 import br.com.truckhospital.modules.core.model.Client
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragmentContract
-import br.com.truckhospital.modules.ui.order.OrderBase
+import br.com.truckhospital.modules.ui.order.create.CreateOrderBase
 
 class ClientContract {
-    interface View: BaseFragmentContract.BaseView, OrderBase.View {
+    interface View: BaseFragmentContract.BaseView, CreateOrderBase.View {
         fun setErrorCNPJ(errorText: String)
 
         fun setErrorCEP(errorText: String)
@@ -15,7 +15,7 @@ class ClientContract {
         fun setErrorPhoneNumber(errorText: String)
     }
 
-    interface Presenter: BaseFragmentContract.BasePresenter<View>,  OrderBase.Presenter {
+    interface Presenter: BaseFragmentContract.BasePresenter<View>,  CreateOrderBase.Presenter {
         fun setValidCNPJ(text: String)
 
         fun setValidCEP(text: String)

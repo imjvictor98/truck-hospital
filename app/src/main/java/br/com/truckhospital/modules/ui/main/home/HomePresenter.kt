@@ -5,8 +5,8 @@ import br.com.truckhospital.modules.core.database.RealTimeDataBase
 import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.core.repository.OrderRepositoryImpl
 import br.com.truckhospital.modules.util.FirebaseAuthHelper
+import br.com.truckhospital.modules.util.extension.NumberUtil
 import br.com.truckhospital.modules.util.extension.toListOf
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -23,25 +23,30 @@ class HomePresenter(override val view: HomeContract.View?) : HomeContract.Presen
     }
 
     override fun signOut() {
-        FirebaseAuth.getInstance().signOut()
+        FirebaseAuthHelper.signOut()
         view?.goToSplash()
     }
 
     override fun createListenerForOrderList() {
         FirebaseAuthHelper.getUserId()?.let { uid ->
             view?.startSkeletonOrderList()
+            view?.startSkeletonBudget()
             val listener = object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                    val orderList = mutableListOf<Order?>()
+                    val orderList = mutableListOf<Order>()
                     dataSnapshot.children.forEach {
-                        val order: Order? = it.getValue<Order>()
-                        orderList.add(order)
+                        it.getValue<Order>()?.also { order ->
+                            orderList.add(order)
+                        }
                     }
 
                     if (orderList.isNotEmpty()) {
                         view?.stopSkeletonOrderList()
+                        view?.stopSkeletonBudget()
                         view?.setOrdersList(orderList.toListOf())
+                        calculateEarns(orderList.toListOf())
+                        Timber.d("HomePresenter: size of orders list = ${orderList.size}")
                     } else {
                         view?.stopSkeletonOrderList()
                     }
@@ -53,6 +58,22 @@ class HomePresenter(override val view: HomeContract.View?) : HomeContract.Presen
                 }
             }
             RealTimeDataBase.dataBase.reference.child(uid).child(OrderRepositoryImpl.ORDERS).addValueEventListener(listener)
+        }
+    }
+
+    override fun calculateEarns(orders: List<Order>) {
+        var currentEarns = 0.0
+
+        orders.forEach { order ->
+            order.budget?.run {
+                currentEarns += totalCost
+            }
+        }
+
+        if (currentEarns > 0.0) {
+            NumberUtil.getStringFormattedByCurrency(2, currentEarns)?.let {
+                view?.setBudgetEarns(it)
+            }
         }
     }
 }

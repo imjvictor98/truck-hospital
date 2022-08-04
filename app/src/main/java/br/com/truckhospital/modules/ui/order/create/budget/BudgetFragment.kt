@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.ui.order.budget
+package br.com.truckhospital.modules.ui.order.create.budget
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import androidx.fragment.app.setFragmentResultListener
 import br.com.truckhospital.databinding.FragmentBudgetBinding
 import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragment
-import br.com.truckhospital.modules.ui.order.OrderActivity
-import br.com.truckhospital.modules.ui.order.description.DescriptionFragment
+import br.com.truckhospital.modules.ui.order.create.CreateOrderActivity
+import br.com.truckhospital.modules.ui.order.create.description.DescriptionFragment
 import br.com.truckhospital.modules.util.extension.addDecimalInputFilter
 import br.com.truckhospital.modules.util.extension.gone
 import br.com.truckhospital.modules.util.extension.invisible
@@ -18,15 +18,15 @@ import br.com.truckhospital.modules.util.extension.visible
 import timber.log.Timber
 import java.util.*
 
-class BudgetFragment : BaseFragment<BudgetContract.Presenter>(), BudgetContract.View {
+class BudgetFragment() : BaseFragment<BudgetContract.Presenter>(), BudgetContract.View {
     private var binding: FragmentBudgetBinding? = null
-    private var activity: OrderActivity? = null
+    private var activity: CreateOrderActivity? = null
     private var mOrder: Order? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentBudgetBinding.inflate(layoutInflater, container, false)
         setPresenter(BudgetPresenter(this))
-        activity = requireActivity() as? OrderActivity
+        activity = requireActivity() as? CreateOrderActivity
         return binding?.root
     }
 

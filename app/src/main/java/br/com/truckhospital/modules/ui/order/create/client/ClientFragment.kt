@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.ui.order.client
+package br.com.truckhospital.modules.ui.order.create.client
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,14 +10,14 @@ import androidx.fragment.app.setFragmentResult
 import br.com.truckhospital.databinding.FragmentClientBinding
 import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragment
-import br.com.truckhospital.modules.ui.order.OrderActivity
+import br.com.truckhospital.modules.ui.order.create.CreateOrderActivity
 import br.com.truckhospital.modules.util.ConstantUtil.EDIT_TEXT_MASK_CEP
 import br.com.truckhospital.modules.util.ConstantUtil.EDIT_TEXT_MASK_CNPJ
 import br.com.truckhospital.modules.util.ConstantUtil.EDIT_TEXT_MASK_PHONE_NUMBER
 import br.com.truckhospital.modules.util.PairUtil.pairOf
 import br.com.truckhospital.modules.util.extension.installMask
 
-class ClientFragment : BaseFragment<ClientPresenter>(), ClientContract.View {
+class ClientFragment() : BaseFragment<ClientPresenter>(), ClientContract.View {
 
     companion object {
         const val EXTRA_CLIENT = "EXTRA_CLIENT"
@@ -25,14 +25,14 @@ class ClientFragment : BaseFragment<ClientPresenter>(), ClientContract.View {
     }
 
     private var binding: FragmentClientBinding? = null
-    private var activity: OrderActivity? = null
+    private var activity: CreateOrderActivity? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentClientBinding.inflate(layoutInflater, container, false)
-        activity = requireActivity() as? OrderActivity
+        activity = requireActivity() as? CreateOrderActivity
         setPresenter(ClientPresenter(this))
         return binding?.root
     }

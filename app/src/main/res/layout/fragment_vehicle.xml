@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".modules.ui.order.vehicle.VehicleFragment">
+    tools:context=".modules.ui.order.create.vehicle.VehicleFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/fragment_vehicle_form_container"

@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.ui.order.client
+package br.com.truckhospital.modules.ui.order.create.client
 
 import br.com.truckhospital.modules.core.model.Client
 import br.com.truckhospital.modules.util.CNPJUtil

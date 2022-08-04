@@ -1,22 +1,22 @@
-package br.com.truckhospital.modules.ui.order
+package br.com.truckhospital.modules.ui.order.create
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import br.com.truckhospital.databinding.ActivityOrderBinding
+import br.com.truckhospital.databinding.ActivityCreateOrderBinding
 import br.com.truckhospital.modules.core.model.*
 import br.com.truckhospital.modules.ui.base.activity.BaseActivity
-import br.com.truckhospital.modules.ui.order.budget.BudgetFragment
-import br.com.truckhospital.modules.ui.order.client.ClientFragment
-import br.com.truckhospital.modules.ui.order.description.DescriptionFragment
-import br.com.truckhospital.modules.ui.order.vehicle.VehicleFragment
+import br.com.truckhospital.modules.ui.order.create.budget.BudgetFragment
+import br.com.truckhospital.modules.ui.order.create.client.ClientFragment
+import br.com.truckhospital.modules.ui.order.create.description.DescriptionFragment
+import br.com.truckhospital.modules.ui.order.create.vehicle.VehicleFragment
 import br.com.truckhospital.modules.ui.success.SuccessActivity
 import br.com.truckhospital.modules.util.DialogUtil
 import br.com.truckhospital.modules.util.PageTransformerUtil
 import br.com.truckhospital.modules.util.extension.onPageSelected
 
-class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.View {
+class CreateOrderActivity : BaseActivity<CreateOrderContract.Presenter>(), CreateOrderContract.View {
 
     companion object {
         private val pages = listOf(
@@ -28,20 +28,20 @@ class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.Vie
         )
 
         fun start(context: Context) {
-            context.startActivity(Intent(context, OrderActivity::class.java))
+            context.startActivity(Intent(context, CreateOrderActivity::class.java))
         }
     }
 
-    private lateinit var binding: ActivityOrderBinding
+    private lateinit var binding: ActivityCreateOrderBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityOrderBinding.inflate(layoutInflater)
+        binding = ActivityCreateOrderBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.activityOrderToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setupViewPager2()
-        setPresenter(OrderPresenter(this))
+        setPresenter(CreateOrderPresenter(this))
     }
 
     override fun onBackPressed() {
@@ -57,25 +57,6 @@ class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.Vie
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return false
-    }
-
-    fun goForward() {
-        if (binding.activityOrderViewPager.currentItem >= 0) {
-            binding.activityOrderViewPager.currentItem += 1
-        }
-    }
-
-    private fun setupViewPager2() {
-        binding.activityOrderViewPager.apply {
-            adapter = OrderSliderAdapter()
-            isUserInputEnabled = false
-            binding.activityOrderDotsIndicator.attachTo(this)
-            setPageTransformer(PageTransformerUtil.zoomOutPageTransformer)
-            offscreenPageLimit = pages.size
-            onPageSelected { position ->
-                supportActionBar?.title = pages[position].title
-            }
-        }
     }
 
     override fun showDialog() {
@@ -103,7 +84,26 @@ class OrderActivity : BaseActivity<OrderContract.Presenter>(), OrderContract.Vie
         finish()
     }
 
-    inner class OrderSliderAdapter : FragmentStateAdapter(this@OrderActivity) {
+    private fun setupViewPager2() {
+        binding.activityOrderViewPager.apply {
+            adapter = OrderSliderAdapter()
+            isUserInputEnabled = false
+            binding.activityOrderDotsIndicator.attachTo(this)
+            setPageTransformer(PageTransformerUtil.zoomOutPageTransformer)
+            offscreenPageLimit = pages.size
+            onPageSelected { position ->
+                supportActionBar?.title = pages[position].title
+            }
+        }
+    }
+
+    fun goForward() {
+        if (binding.activityOrderViewPager.currentItem >= 0) {
+            binding.activityOrderViewPager.currentItem += 1
+        }
+    }
+
+    inner class OrderSliderAdapter : FragmentStateAdapter(this@CreateOrderActivity) {
         override fun getItemCount() = pages.size
 
         override fun createFragment(position: Int) = when(pages[position]) {

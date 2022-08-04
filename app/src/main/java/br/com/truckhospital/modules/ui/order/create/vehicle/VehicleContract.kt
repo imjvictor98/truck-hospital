@@ -1,11 +1,11 @@
-package br.com.truckhospital.modules.ui.order.vehicle
+package br.com.truckhospital.modules.ui.order.create.vehicle
 
 import br.com.truckhospital.modules.core.model.Vehicle
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragmentContract
-import br.com.truckhospital.modules.ui.order.OrderBase
+import br.com.truckhospital.modules.ui.order.create.CreateOrderBase
 
 class VehicleContract {
-    interface View: BaseFragmentContract.BaseView,  OrderBase.View {
+    interface View: BaseFragmentContract.BaseView,  CreateOrderBase.View {
         fun setErrorPlate(errorText: String)
 
         fun setErrorBrand(errorText: String)
@@ -13,7 +13,7 @@ class VehicleContract {
         fun setErrorModel(errorText: String)
     }
 
-    interface Presenter: BaseFragmentContract.BasePresenter<View>,  OrderBase.Presenter {
+    interface Presenter: BaseFragmentContract.BasePresenter<View>,  CreateOrderBase.Presenter {
         fun setValidPlate(text: String)
 
         fun setValidBrand(text: String)

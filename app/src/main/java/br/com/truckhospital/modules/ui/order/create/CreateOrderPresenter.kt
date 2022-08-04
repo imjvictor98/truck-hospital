@@ -1,10 +1,10 @@
-package br.com.truckhospital.modules.ui.order
+package br.com.truckhospital.modules.ui.order.create
 
 import br.com.truckhospital.modules.core.database.RealTimeDataBase
 import br.com.truckhospital.modules.core.repository.OrderRepositoryImpl
 import br.com.truckhospital.modules.core.model.*
 
-class OrderPresenter(override val view: OrderContract.View?) : OrderContract.Presenter {
+class CreateOrderPresenter(override val view: CreateOrderContract.View?) : CreateOrderContract.Presenter {
 
     private val database by lazy {
         OrderRepositoryImpl(RealTimeDataBase.dataBase.reference)

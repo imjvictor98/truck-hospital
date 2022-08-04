@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.ui.order.vehicle
+package br.com.truckhospital.modules.ui.order.create.vehicle
 
 import br.com.truckhospital.modules.core.model.Vehicle
 

@@ -7,14 +7,17 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.truckhospital.databinding.ItemListOrderBinding
 import br.com.truckhospital.modules.MainApplication
 import br.com.truckhospital.modules.core.model.Order
+import br.com.truckhospital.modules.util.extension.NumberUtil
+import com.google.android.material.card.MaterialCardView
 import java.text.NumberFormat
 
-class HomeOrderAdapter(private val mValues: List<Order>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HomeOrderAdapter(
+    private val mValues: List<Order>,
+    private val mListener: HomeOrderListener? = null
+): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    inner class ViewHolder(itemView: ItemListOrderBinding): RecyclerView.ViewHolder(itemView.root) {
-        val title: TextView = itemView.itemListOrderTitle
-        val description: TextView = itemView.itemListOrderDescription
-        val total: TextView = itemView.itemListOrderTotal
+    interface HomeOrderListener {
+        fun onClick(order: Order)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -27,14 +30,23 @@ class HomeOrderAdapter(private val mValues: List<Order>): RecyclerView.Adapter<R
             val order = mValues[position]
             title.text = order.client?.name
             description.text = "04 Julho 2022"
-            val numberFormat = NumberFormat.getCurrencyInstance(MainApplication.localeBRL).apply {
-                maximumFractionDigits = 2
+
+            total.text = NumberUtil.getStringFormattedByCurrency(2, order.budget?.totalCost)
+
+            container.setOnClickListener {
+                mListener?.onClick(order)
             }
-            total.text = numberFormat.format(order.budget?.totalCost)
         }
     }
 
     override fun getItemCount(): Int {
         return mValues.size
+    }
+
+    inner class ViewHolder(itemView: ItemListOrderBinding): RecyclerView.ViewHolder(itemView.root) {
+        val title: TextView = itemView.itemListOrderTitle
+        val description: TextView = itemView.itemListOrderDescription
+        val total: TextView = itemView.itemListOrderTotal
+        val container: MaterialCardView = itemView.itemListOrderContainer
     }
 }

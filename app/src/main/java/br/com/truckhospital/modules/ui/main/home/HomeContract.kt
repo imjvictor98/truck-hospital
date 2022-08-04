@@ -14,6 +14,12 @@ class HomeContract {
         fun startSkeletonOrderList()
 
         fun stopSkeletonOrderList()
+
+        fun startSkeletonBudget()
+
+        fun stopSkeletonBudget()
+
+        fun setBudgetEarns(text: String)
     }
 
     interface Presenter: BaseFragmentContract.BasePresenter<View> {
@@ -22,5 +28,7 @@ class HomeContract {
         fun signOut()
 
         fun createListenerForOrderList()
+
+        fun calculateEarns(orders: List<Order>)
     }
 }

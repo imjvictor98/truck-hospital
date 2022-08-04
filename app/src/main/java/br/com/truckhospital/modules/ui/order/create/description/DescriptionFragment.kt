@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.ui.order.description
+package br.com.truckhospital.modules.ui.order.create.description
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +10,12 @@ import androidx.fragment.app.setFragmentResultListener
 import br.com.truckhospital.databinding.FragmentDescriptionBinding
 import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragment
-import br.com.truckhospital.modules.ui.order.OrderActivity
-import br.com.truckhospital.modules.ui.order.vehicle.VehicleFragment
+import br.com.truckhospital.modules.ui.order.create.CreateOrderActivity
+import br.com.truckhospital.modules.ui.order.create.vehicle.VehicleFragment
 import br.com.truckhospital.modules.util.PairUtil.pairOf
 import timber.log.Timber
 
-class DescriptionFragment constructor(private val type: OrderActivity.OrderPageEnum):
+class DescriptionFragment constructor(private val type: CreateOrderActivity.OrderPageEnum):
     BaseFragment<DescriptionContract.Presenter>(), DescriptionContract.View {
 
     companion object {
@@ -26,7 +26,7 @@ class DescriptionFragment constructor(private val type: OrderActivity.OrderPageE
     }
 
     private var binding: FragmentDescriptionBinding? = null
-    private var activity: OrderActivity? = null
+    private var activity: CreateOrderActivity? = null
     private var mOrder: Order? = null
 
     override fun onCreateView(
@@ -36,13 +36,13 @@ class DescriptionFragment constructor(private val type: OrderActivity.OrderPageE
     ): View? {
         binding = FragmentDescriptionBinding.inflate(layoutInflater, container, false)
         setPresenter(DescriptionPresenter(this))
-        activity = requireActivity() as? OrderActivity
+        activity = requireActivity() as? CreateOrderActivity
         return binding?.root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (type == OrderActivity.OrderPageEnum.ORDER_PAGE_COMPLAIN) {
+        if (type == CreateOrderActivity.OrderPageEnum.ORDER_PAGE_COMPLAIN) {
             setFragmentResultListener(VehicleFragment.REQUEST_EXTRA_VEHICLE) { _, bundle ->
                 mOrder = bundle.getSerializable(VehicleFragment.EXTRA_VEHICLE) as? Order
                 Timber.d("Test SFR (Description) coming from vehicle: %s", mOrder?.vehicle?.model)
@@ -60,14 +60,14 @@ class DescriptionFragment constructor(private val type: OrderActivity.OrderPageE
         super.onViewCreated(view, savedInstanceState)
 
         binding?.fragmentEditTil?.hint = when (type) {
-            OrderActivity.OrderPageEnum.ORDER_PAGE_COMPLAIN -> "Tem alguma reclamação?"
+            CreateOrderActivity.OrderPageEnum.ORDER_PAGE_COMPLAIN -> "Tem alguma reclamação?"
             else -> "Diz aí pra gente o que você fez no serviço"
         }
         binding?.fragmentDescriptionFab?.setOnClickListener {
             getPresenter()?.getDescription(binding?.fragmentDescriptionEdit?.text.toString())?.let {
-                if (type == OrderActivity.OrderPageEnum.ORDER_PAGE_COMPLAIN) {
+                if (type == CreateOrderActivity.OrderPageEnum.ORDER_PAGE_COMPLAIN) {
                     setFragmentResult(REQUEST_EXTRA_DESCRIPTION, bundleOf(pairOf(EXTRA_DESCRIPTION, mOrder?.copy(complaint = it))))
-                } else if (type == OrderActivity.OrderPageEnum.ORDER_PAGE_SERVICE) {
+                } else if (type == CreateOrderActivity.OrderPageEnum.ORDER_PAGE_SERVICE) {
                     setFragmentResult(REQUEST_EXTRA_SERVICE, bundleOf(pairOf(EXTRA_SERVICE, mOrder?.copy(service = it))))
                 }
                 activity?.goForward()

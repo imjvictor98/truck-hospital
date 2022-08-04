@@ -20,4 +20,6 @@ object FirebaseAuthHelper {
 
     fun getUserId() = userAuth.currentUser?.uid
 
+    fun signOut() = userAuth.signOut()
+
 }

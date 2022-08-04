@@ -36,7 +36,12 @@
             android:exported="false"
             android:theme="@style/Theme.TruckHospital.NoActionBar" />
         <activity
-            android:name=".modules.ui.order.OrderActivity"
+            android:name=".modules.ui.order.create.CreateOrderActivity"
+            android:exported="false"
+            android:parentActivityName=".modules.ui.main.MainActivity"
+            android:theme="@style/Theme.TruckHospital.NoActionBar" />
+        <activity
+            android:name=".modules.ui.order.show.ShowOrderActivity"
             android:exported="false"
             android:parentActivityName=".modules.ui.main.MainActivity"
             android:theme="@style/Theme.TruckHospital.NoActionBar" />

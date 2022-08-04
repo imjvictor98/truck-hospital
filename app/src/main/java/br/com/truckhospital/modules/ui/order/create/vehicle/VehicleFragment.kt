@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.ui.order.vehicle
+package br.com.truckhospital.modules.ui.order.create.vehicle
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,15 +9,14 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import br.com.truckhospital.databinding.FragmentVehicleBinding
-import br.com.truckhospital.modules.core.model.Client
 import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragment
-import br.com.truckhospital.modules.ui.order.OrderActivity
-import br.com.truckhospital.modules.ui.order.client.ClientFragment
+import br.com.truckhospital.modules.ui.order.create.CreateOrderActivity
+import br.com.truckhospital.modules.ui.order.create.client.ClientFragment
 import br.com.truckhospital.modules.util.PairUtil.pairOf
 import timber.log.Timber
 
-class VehicleFragment: BaseFragment<VehiclePresenter>(), VehicleContract.View {
+class VehicleFragment(): BaseFragment<VehiclePresenter>(), VehicleContract.View {
 
     companion object {
         const val EXTRA_VEHICLE = "EXTRA_VEHICLE"
@@ -25,7 +24,7 @@ class VehicleFragment: BaseFragment<VehiclePresenter>(), VehicleContract.View {
     }
 
     private var binding: FragmentVehicleBinding? = null
-    private var activity: OrderActivity? = null
+    private var activity: CreateOrderActivity? = null
     private var mOrder: Order? = null
 
     override fun onCreateView(
@@ -35,7 +34,7 @@ class VehicleFragment: BaseFragment<VehiclePresenter>(), VehicleContract.View {
     ): View? {
         binding = FragmentVehicleBinding.inflate(layoutInflater, container, false)
         setPresenter(VehiclePresenter(this))
-        activity = requireActivity() as? OrderActivity
+        activity = requireActivity() as? CreateOrderActivity
         return binding?.root
     }
 

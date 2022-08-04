@@ -2,14 +2,11 @@ package br.com.truckhospital.modules.ui.success
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.text.toSpannable
 import br.com.truckhospital.R
-import br.com.truckhospital.databinding.ActivityOrderBinding
 import br.com.truckhospital.databinding.ActivitySuccessBinding
-import br.com.truckhospital.modules.ui.base.activity.BaseActivity
 import br.com.truckhospital.modules.util.extension.setColouredSpan
 
 class SuccessActivity : AppCompatActivity() {

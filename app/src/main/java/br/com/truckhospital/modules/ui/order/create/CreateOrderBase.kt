@@ -1,6 +1,6 @@
-package br.com.truckhospital.modules.ui.order
+package br.com.truckhospital.modules.ui.order.create
 
-class OrderBase {
+class CreateOrderBase {
     interface View {
         fun setNextButton(value: Boolean)
     }

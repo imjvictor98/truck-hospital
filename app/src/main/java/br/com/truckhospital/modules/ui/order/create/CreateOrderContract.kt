@@ -1,9 +1,9 @@
-package br.com.truckhospital.modules.ui.order
+package br.com.truckhospital.modules.ui.order.create
 
 import br.com.truckhospital.modules.core.model.*
 import br.com.truckhospital.modules.ui.base.activity.BaseActivityContract
 
-class OrderContract: BaseActivityContract {
+class CreateOrderContract: BaseActivityContract {
     interface View : BaseActivityContract.BaseView {
         fun showDialog()
 
