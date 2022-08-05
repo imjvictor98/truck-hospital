@@ -36,12 +36,12 @@
             android:exported="false"
             android:theme="@style/Theme.TruckHospital.NoActionBar" />
         <activity
-            android:name=".modules.ui.order.create.CreateOrderActivity"
+            android:name="br.com.truckhospital.modules.ui.order.flows.create.CreateOrderActivity"
             android:exported="false"
             android:parentActivityName=".modules.ui.main.MainActivity"
             android:theme="@style/Theme.TruckHospital.NoActionBar" />
         <activity
-            android:name=".modules.ui.order.show.ShowOrderActivity"
+            android:name="br.com.truckhospital.modules.ui.order.flows.show.ShowOrderActivity"
             android:exported="false"
             android:parentActivityName=".modules.ui.main.MainActivity"
             android:theme="@style/Theme.TruckHospital.NoActionBar" />

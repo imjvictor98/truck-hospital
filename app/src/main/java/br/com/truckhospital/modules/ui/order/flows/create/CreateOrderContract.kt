@@ -1,6 +1,6 @@
-package br.com.truckhospital.modules.ui.order.create
+package br.com.truckhospital.modules.ui.order.flows.create
 
-import br.com.truckhospital.modules.core.model.*
+import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.ui.base.activity.BaseActivityContract
 
 class CreateOrderContract: BaseActivityContract {

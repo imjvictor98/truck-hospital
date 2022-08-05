@@ -9,7 +9,7 @@ import br.com.truckhospital.databinding.FragmentHomeBinding
 import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragment
 import br.com.truckhospital.modules.ui.main.MainActivity
-import br.com.truckhospital.modules.ui.order.show.ShowOrderActivity
+import br.com.truckhospital.modules.ui.order.flows.show.ShowOrderActivity
 import br.com.truckhospital.modules.ui.splash.SplashActivity
 import br.com.truckhospital.modules.util.extension.getParentActivity
 import br.com.truckhospital.modules.util.extension.visible
@@ -50,6 +50,11 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
         }
     }
 
+    override fun onPause() {
+        getPresenter()?.removeListenerForOrderList()
+        super.onPause()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -66,7 +71,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
     override fun setOrdersList(orders: List<Order>) {
         binding.fragmentHomeOrderRecyclerView.adapter = HomeOrderAdapter(orders, object : HomeOrderAdapter.HomeOrderListener {
             override fun onClick(order: Order) {
-                ShowOrderActivity.start(mContext)
+                ShowOrderActivity.start(mContext, order)
             }
         })
     }

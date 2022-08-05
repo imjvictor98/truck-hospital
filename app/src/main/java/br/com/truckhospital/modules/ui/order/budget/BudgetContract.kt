@@ -1,8 +1,8 @@
-package br.com.truckhospital.modules.ui.order.create.budget
+package br.com.truckhospital.modules.ui.order.budget
 
 import br.com.truckhospital.modules.core.model.Budget
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragmentContract
-import br.com.truckhospital.modules.ui.order.create.CreateOrderBase
+import br.com.truckhospital.modules.ui.order.flows.create.CreateOrderBase
 
 class BudgetContract {
     interface View: BaseFragmentContract.BaseView, CreateOrderBase.View {

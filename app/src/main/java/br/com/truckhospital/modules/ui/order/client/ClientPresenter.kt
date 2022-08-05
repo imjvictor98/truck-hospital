@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.ui.order.create.client
+package br.com.truckhospital.modules.ui.order.client
 
 import br.com.truckhospital.modules.core.model.Client
 import br.com.truckhospital.modules.util.CNPJUtil
@@ -52,4 +52,12 @@ class ClientPresenter(override val view: ClientContract.View?) : ClientContract.
     }
 
     override fun getClient(cpf: String, cep: String, name: String, number: String) = Client(cpf, name, number, cep)
+
+    override fun checkMode(isReadMode: Boolean, client: Client?) {
+        if (isReadMode && client != null) {
+            view?.applyReadMode()
+        } else {
+            view?.applyEditMode()
+        }
+    }
 }

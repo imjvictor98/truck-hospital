@@ -1,8 +1,8 @@
-package br.com.truckhospital.modules.ui.order.create
+package br.com.truckhospital.modules.ui.order.flows.create
 
 import br.com.truckhospital.modules.core.database.RealTimeDataBase
 import br.com.truckhospital.modules.core.repository.OrderRepositoryImpl
-import br.com.truckhospital.modules.core.model.*
+import br.com.truckhospital.modules.core.model.Order
 
 class CreateOrderPresenter(override val view: CreateOrderContract.View?) : CreateOrderContract.Presenter {
 

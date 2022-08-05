@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".modules.ui.order.create.budget.BudgetFragment">
+    tools:context=".modules.ui.order.budget.BudgetFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/fragment_budget_form_container"

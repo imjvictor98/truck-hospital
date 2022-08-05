@@ -29,6 +29,8 @@ class HomeContract {
 
         fun createListenerForOrderList()
 
+        fun removeListenerForOrderList()
+
         fun calculateEarns(orders: List<Order>)
     }
 }

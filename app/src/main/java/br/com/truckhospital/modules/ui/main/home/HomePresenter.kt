@@ -9,11 +9,15 @@ import br.com.truckhospital.modules.util.extension.NumberUtil
 import br.com.truckhospital.modules.util.extension.toListOf
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import timber.log.Timber
 
 class HomePresenter(override val view: HomeContract.View?) : HomeContract.Presenter {
+    private var valueEventListener: ValueEventListener? = null
+    private var reference: DatabaseReference? = null
+
     override fun getPhoneNumber() {
         val numberWithoutCountryCode =
             PhoneNumberUtils.formatNumber(FirebaseAuthHelper.userAuth.currentUser?.phoneNumber, "55")
@@ -57,7 +61,15 @@ class HomePresenter(override val view: HomeContract.View?) : HomeContract.Presen
                     view?.stopSkeletonOrderList()
                 }
             }
-            RealTimeDataBase.dataBase.reference.child(uid).child(OrderRepositoryImpl.ORDERS).addValueEventListener(listener)
+            valueEventListener = listener
+            reference = RealTimeDataBase.dataBase.reference.child(uid).child(OrderRepositoryImpl.ORDERS)
+            reference?.addValueEventListener(listener)
+        }
+    }
+
+    override fun removeListenerForOrderList() {
+        valueEventListener?.run {
+            reference?.removeEventListener(this)
         }
     }
 

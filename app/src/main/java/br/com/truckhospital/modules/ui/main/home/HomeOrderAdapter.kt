@@ -5,11 +5,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.truckhospital.databinding.ItemListOrderBinding
-import br.com.truckhospital.modules.MainApplication
 import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.util.extension.NumberUtil
 import com.google.android.material.card.MaterialCardView
-import java.text.NumberFormat
 
 class HomeOrderAdapter(
     private val mValues: List<Order>,

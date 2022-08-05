@@ -1,16 +1,18 @@
-package br.com.truckhospital.modules.ui.order.create
+package br.com.truckhospital.modules.ui.order.flows.create
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import br.com.truckhospital.databinding.ActivityCreateOrderBinding
-import br.com.truckhospital.modules.core.model.*
+import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.ui.base.activity.BaseActivity
-import br.com.truckhospital.modules.ui.order.create.budget.BudgetFragment
-import br.com.truckhospital.modules.ui.order.create.client.ClientFragment
-import br.com.truckhospital.modules.ui.order.create.description.DescriptionFragment
-import br.com.truckhospital.modules.ui.order.create.vehicle.VehicleFragment
+import br.com.truckhospital.modules.ui.order.OrderPage
+import br.com.truckhospital.modules.ui.order.OrderPageEnum
+import br.com.truckhospital.modules.ui.order.budget.BudgetFragment
+import br.com.truckhospital.modules.ui.order.client.ClientFragment
+import br.com.truckhospital.modules.ui.order.description.DescriptionFragment
+import br.com.truckhospital.modules.ui.order.vehicle.VehicleFragment
 import br.com.truckhospital.modules.ui.success.SuccessActivity
 import br.com.truckhospital.modules.util.DialogUtil
 import br.com.truckhospital.modules.util.PageTransformerUtil
@@ -19,14 +21,6 @@ import br.com.truckhospital.modules.util.extension.onPageSelected
 class CreateOrderActivity : BaseActivity<CreateOrderContract.Presenter>(), CreateOrderContract.View {
 
     companion object {
-        private val pages = listOf(
-            OrderPageEnum.ORDER_PAGE_CLIENT,
-            OrderPageEnum.ORDER_PAGE_VEHICLE,
-            OrderPageEnum.ORDER_PAGE_COMPLAIN,
-            OrderPageEnum.ORDER_PAGE_SERVICE,
-            OrderPageEnum.ORDER_PAGE_BUDGET
-        )
-
         fun start(context: Context) {
             context.startActivity(Intent(context, CreateOrderActivity::class.java))
         }
@@ -90,9 +84,9 @@ class CreateOrderActivity : BaseActivity<CreateOrderContract.Presenter>(), Creat
             isUserInputEnabled = false
             binding.activityOrderDotsIndicator.attachTo(this)
             setPageTransformer(PageTransformerUtil.zoomOutPageTransformer)
-            offscreenPageLimit = pages.size
+            offscreenPageLimit = OrderPage.pagesForCreation.size
             onPageSelected { position ->
-                supportActionBar?.title = pages[position].title
+                supportActionBar?.title = OrderPage.pagesForCreation[position].title
             }
         }
     }
@@ -104,22 +98,16 @@ class CreateOrderActivity : BaseActivity<CreateOrderContract.Presenter>(), Creat
     }
 
     inner class OrderSliderAdapter : FragmentStateAdapter(this@CreateOrderActivity) {
-        override fun getItemCount() = pages.size
+        override fun getItemCount() = OrderPage.pagesForCreation.size
 
-        override fun createFragment(position: Int) = when(pages[position]) {
+        override fun createFragment(position: Int) = when(OrderPage.pagesForCreation[position]) {
             OrderPageEnum.ORDER_PAGE_CLIENT -> ClientFragment()
             OrderPageEnum.ORDER_PAGE_VEHICLE -> VehicleFragment()
             OrderPageEnum.ORDER_PAGE_BUDGET -> BudgetFragment()
-            else -> DescriptionFragment(pages[position])
+            else -> DescriptionFragment(OrderPage.pagesForCreation[position])
         }
     }
 
-    enum class OrderPageEnum(val title: String) {
-        ORDER_PAGE_CLIENT("Cliente"),
-        ORDER_PAGE_VEHICLE("Veículo"),
-        ORDER_PAGE_COMPLAIN("Reclamação"),
-        ORDER_PAGE_SERVICE("Serviço"),
-        ORDER_PAGE_BUDGET("Total de Gastos")
-    }
+
 
 }

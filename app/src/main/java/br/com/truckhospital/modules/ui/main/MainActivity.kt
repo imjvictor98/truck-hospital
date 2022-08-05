@@ -7,7 +7,7 @@ import androidx.navigation.ui.setupWithNavController
 import br.com.truckhospital.R
 import br.com.truckhospital.databinding.ActivityMainBinding
 import br.com.truckhospital.modules.ui.base.activity.BaseActivity
-import br.com.truckhospital.modules.ui.order.create.CreateOrderActivity
+import br.com.truckhospital.modules.ui.order.flows.create.CreateOrderActivity
 import br.com.truckhospital.modules.util.extension.getNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.ui.order.create
+package br.com.truckhospital.modules.ui.order.flows.create
 
 class CreateOrderBase {
     interface View {

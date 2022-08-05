@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.ui.order.create.budget
+package br.com.truckhospital.modules.ui.order.budget
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import androidx.fragment.app.setFragmentResultListener
 import br.com.truckhospital.databinding.FragmentBudgetBinding
 import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.ui.base.fragment.BaseFragment
-import br.com.truckhospital.modules.ui.order.create.CreateOrderActivity
-import br.com.truckhospital.modules.ui.order.create.description.DescriptionFragment
+import br.com.truckhospital.modules.ui.order.flows.create.CreateOrderActivity
+import br.com.truckhospital.modules.ui.order.description.DescriptionFragment
 import br.com.truckhospital.modules.util.extension.addDecimalInputFilter
 import br.com.truckhospital.modules.util.extension.gone
 import br.com.truckhospital.modules.util.extension.invisible

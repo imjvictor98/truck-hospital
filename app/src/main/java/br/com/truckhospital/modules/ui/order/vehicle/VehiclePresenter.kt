@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.ui.order.create.vehicle
+package br.com.truckhospital.modules.ui.order.vehicle
 
 import br.com.truckhospital.modules.core.model.Vehicle
 
@@ -39,5 +39,13 @@ class VehiclePresenter(override val view: VehicleContract.View?) : VehicleContra
     }
 
     override fun getVehicle(plate: String, brand: String, model: String) = Vehicle(plate, brand, model)
+
+    override fun checkMode(isReadMode: Boolean, vehicle: Vehicle?) {
+        if (isReadMode && vehicle != null) {
+            view?.applyReadMode()
+        } else {
+            view?.applyEditMode()
+        }
+    }
 
 }

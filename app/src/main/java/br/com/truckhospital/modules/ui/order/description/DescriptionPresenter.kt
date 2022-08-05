@@ -1,4 +1,4 @@
-package br.com.truckhospital.modules.ui.order.create.description
+package br.com.truckhospital.modules.ui.order.description
 
 import br.com.truckhospital.modules.core.model.Complaint
 
