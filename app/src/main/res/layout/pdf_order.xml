@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/black_300"
+        android:layout_marginVertical="8dp"
+        android:textSize="20sp"
+        android:text="HOSPITAL DOS CAMINHÕES" />
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/pdf_order_os"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/black_300"
+            android:layout_marginVertical="8dp"
+            android:textSize="20sp"
+            android:text="Ordem de Serviço: " />
+
+        <TextView
+            android:id="@+id/pdf_order_os_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black_300"
+            android:layout_marginStart="8dp"
+            android:layout_marginVertical="8dp"
+            android:textSize="20sp"
+            android:text="... " />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/pdf_order_section_client"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="@color/grey_300"
+        android:alpha=".1"
+        android:textAlignment="center"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/black_300"
+        android:layout_marginVertical="8dp"
+        android:textSize="20sp"
+        android:text="Dados do Cliente" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <TableRow>
+            <TextView
+                android:id="@+id/pdf_order_client"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/black_300"
+                android:textSize="16sp"
+                android:text="Cliente: "
+                />
+            <TextView
+                android:id="@+id/pdf_order_client_text"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/black_300"
+                android:textSize="16sp"
+                android:text="..."
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="8dp">
+            <TextView
+                android:id="@+id/pdf_order_cnpj"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/black_300"
+                android:textSize="16sp"
+                android:text="CNPJ: "
+                />
+            <TextView
+                android:id="@+id/pdf_order_cnpj_text"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/black_300"
+                android:textSize="16sp"
+                android:text="..."
+                />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/pdf_order_section_vehicle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="@color/grey_300"
+        android:alpha=".1"
+        android:textAlignment="center"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/black_300"
+        android:layout_marginVertical="8dp"
+        android:textSize="20sp"
+        android:text="Dados do Veículo" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <TableRow>
+            <TextView
+                android:id="@+id/pdf_order_brand"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/black_300"
+                android:textSize="16sp"
+                android:text="Marca: "
+                />
+            <TextView
+                android:id="@+id/pdf_order_brand_text"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/black_300"
+                android:textSize="16sp"
+                android:text="..."
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="8dp">
+            <TextView
+                android:id="@+id/pdf_order_plate"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/black_300"
+                android:textSize="16sp"
+                android:text="Placa: "
+                />
+            <TextView
+                android:id="@+id/pdf_order_plate_text"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/black_300"
+                android:textSize="16sp"
+                android:text="..."
+                />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/pdf_order_section_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="@color/grey_300"
+        android:alpha=".1"
+        android:textAlignment="center"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/black_300"
+        android:layout_marginVertical="8dp"
+        android:textSize="20sp"
+        android:text="Serviço" />
+
+    <TextView
+        android:id="@+id/pdf_order_section_service_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/black_300"
+        android:layout_marginVertical="8dp"
+        android:textSize="16sp"
+        android:text="" />
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <TableRow>
+            <TextView
+                android:id="@+id/pdf_order_labor_cost"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/black_300"
+                android:textSize="16sp"
+                android:text="Mão de Obra: "
+                />
+            <TextView
+                android:id="@+id/pdf_order_labor_cost_text"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/black_300"
+                android:textSize="16sp"
+                android:text="..."
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="8dp">
+            <TextView
+                android:id="@+id/pdf_order_parts_cost"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/black_300"
+                android:textSize="16sp"
+                android:text="Peças: "
+                />
+            <TextView
+                android:id="@+id/pdf_order_parts_cost_text"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/black_300"
+                android:textSize="16sp"
+                android:text="..."
+                />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="8dp">
+            <TextView
+                android:id="@+id/pdf_order_total_cost"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/black_300"
+                android:textSize="16sp"
+                android:text="Total: "
+                />
+            <TextView
+                android:id="@+id/pdf_order_total_cost_text"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/black_300"
+                android:textSize="16sp"
+                android:text="..."
+                />
+
+        </TableRow>
+
+    </TableLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

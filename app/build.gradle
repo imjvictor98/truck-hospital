@@ -48,9 +48,9 @@ android {
 
 dependencies {
 
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0'
-    def androidx_navigation = "2.5.0"
+    def androidx_navigation = "2.5.1"
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:${androidx_navigation}")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${androidx_navigation}")
     implementation('androidx.core:core-ktx:1.8.0')
     implementation('androidx.appcompat:appcompat:1.4.2')
     implementation('com.google.android.material:material:1.6.1')
@@ -58,7 +58,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:$androidx_navigation")
     implementation("androidx.navigation:navigation-ui-ktx:$androidx_navigation")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$androidx_navigation")
-    implementation("androidx.activity:activity-ktx:1.5.0")
+    implementation("androidx.activity:activity-ktx:1.5.1")
 
     def firebase_bom = "29.1.0"
     implementation(
@@ -73,6 +73,11 @@ dependencies {
     implementation("com.firebaseui:firebase-ui-database:$firebase_ui")
     implementation("com.firebaseui:firebase-ui-firestore:$firebase_ui")
     implementation("com.firebaseui:firebase-ui-storage:$firebase_ui")
+
+    def firebase_check = "16.0.0"
+    implementation("com.google.firebase:firebase-appcheck-playintegrity:$firebase_check")
+    implementation("com.google.firebase:firebase-appcheck:$firebase_check")
+    implementation("com.google.firebase:firebase-appcheck-safetynet:$firebase_check")
 
     def kotlin_coroutines = "1.6.0"
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines")

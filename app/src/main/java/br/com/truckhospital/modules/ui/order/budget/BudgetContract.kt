@@ -17,6 +17,10 @@ class BudgetContract {
         fun showDoneButton()
 
         fun hideDoneButton()
+
+        fun applyReadMode()
+
+        fun applyEditMode()
     }
 
     interface Presenter: BaseFragmentContract.BasePresenter<View>, CreateOrderBase.Presenter {
@@ -25,5 +29,7 @@ class BudgetContract {
         fun formatCosts(labor: String, parts: String)
 
         fun getBudget(labor: String, parts: String): Budget
+
+        fun checkMode(isReadMode: Boolean, budget: Budget?)
     }
 }

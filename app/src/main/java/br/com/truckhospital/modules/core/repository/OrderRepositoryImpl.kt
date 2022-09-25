@@ -1,7 +1,7 @@
 package br.com.truckhospital.modules.core.repository
 
 import br.com.truckhospital.modules.core.model.Order
-import br.com.truckhospital.modules.util.FirebaseAuthHelper
+import br.com.truckhospital.modules.util.FirebaseHelper
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 
@@ -14,7 +14,7 @@ class OrderRepositoryImpl(
     }
 
     override fun addOrder(order: Order, onSuccess: () -> Unit) {
-        FirebaseAuthHelper.getUserId()?.let { uid ->
+        FirebaseHelper.getUserId()?.let { uid ->
             database
                 .child(uid)
                 .child(ORDERS)

@@ -53,4 +53,12 @@ class BudgetPresenter(override val view: BudgetContract.View?) : BudgetContract.
         return Budget(laborCost, partsCost, laborCost + partsCost)
     }
 
+    override fun checkMode(isReadMode: Boolean, budget: Budget?) {
+        if (isReadMode && budget != null) {
+            view?.applyReadMode()
+        } else {
+            view?.applyEditMode()
+        }
+    }
+
 }

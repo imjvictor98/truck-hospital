@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import br.com.truckhospital.databinding.ActivityShowOrderBinding
+import br.com.truckhospital.modules.core.model.ActionListener
 import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.ui.base.activity.BaseActivity
 import br.com.truckhospital.modules.ui.order.OrderPage
@@ -45,7 +46,17 @@ class ShowOrderActivity: ShowOrderContract.View, BaseActivity<ShowOrderContract.
     }
 
     private fun setTabMediator() {
-        binding.activityShowOrderViewPager.adapter = ShowOrderAdapter(this, mOrder!!)
+        binding.activityShowOrderViewPager.adapter = ShowOrderAdapter(this, mOrder!!, object : ActionListener {
+            override fun onCreatePDFCLick() {
+
+            }
+
+            override fun onCreateAndSendWhatsApp() {
+
+            }
+        })
+
+
         TabLayoutMediator(binding.activityShowOrderTabLayout, binding.activityShowOrderViewPager) { tab, position ->
 
             OrderPage.pagesForShow[position].icon?.run {

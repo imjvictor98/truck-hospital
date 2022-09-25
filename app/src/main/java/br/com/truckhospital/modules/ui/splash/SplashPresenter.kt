@@ -1,11 +1,11 @@
 package br.com.truckhospital.modules.ui.splash
 
-import br.com.truckhospital.modules.util.FirebaseAuthHelper
+import br.com.truckhospital.modules.util.FirebaseHelper
 
 class SplashPresenter(override val view: SplashContract.View?) : SplashContract.Presenter {
     override fun checkUser() {
         view?.showLoading()
-        FirebaseAuthHelper.userAuth.currentUser?.getIdToken(true)
+        FirebaseHelper.userAuth.currentUser?.getIdToken(true)
             ?.addOnCompleteListener { result ->
                 if (result.isSuccessful) {
                     view?.hideLoading()

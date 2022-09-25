@@ -11,8 +11,7 @@ import br.com.truckhospital.modules.ui.base.activity.BaseActivity
 import br.com.truckhospital.modules.ui.confirmation.ConfirmationActivity
 import br.com.truckhospital.modules.util.DialogUtil
 import br.com.truckhospital.modules.util.ConstantUtil.EDIT_TEXT_MASK_PHONE_NUMBER
-import br.com.truckhospital.modules.util.FirebaseAuthHelper
-import br.com.truckhospital.modules.util.PhoneMaskUtil
+import br.com.truckhospital.modules.util.FirebaseHelper
 import br.com.truckhospital.modules.util.extension.gone
 import br.com.truckhospital.modules.util.extension.installMask
 import br.com.truckhospital.modules.util.extension.showSnackBar
@@ -49,7 +48,7 @@ class LoginActivity :
             getPresenter()?.validatePhone(
                 binding.firebaseUiAuthPhoneCountryCodeInput.text.toString(),
                 binding.firebaseUiAuthPhoneInput.text.toString(),
-                FirebaseAuthHelper.phoneAuthOptionsBuilder(this)
+                FirebaseHelper.phoneAuthOptionsBuilder(this)
             )
         }
     }

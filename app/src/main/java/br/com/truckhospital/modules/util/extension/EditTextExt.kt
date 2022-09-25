@@ -4,6 +4,7 @@ import android.text.InputFilter
 import android.widget.EditText
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 
+
 fun EditText.installMask(
     mask: String,
     onValueChanged: ((maskFilled: Boolean, extracted: String, formatted: String) -> Unit)? = null

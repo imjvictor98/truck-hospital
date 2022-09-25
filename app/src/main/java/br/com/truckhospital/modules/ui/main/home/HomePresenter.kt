@@ -4,7 +4,7 @@ import android.telephony.PhoneNumberUtils
 import br.com.truckhospital.modules.core.database.RealTimeDataBase
 import br.com.truckhospital.modules.core.model.Order
 import br.com.truckhospital.modules.core.repository.OrderRepositoryImpl
-import br.com.truckhospital.modules.util.FirebaseAuthHelper
+import br.com.truckhospital.modules.util.FirebaseHelper
 import br.com.truckhospital.modules.util.extension.NumberUtil
 import br.com.truckhospital.modules.util.extension.toListOf
 import com.google.firebase.database.DataSnapshot
@@ -20,19 +20,19 @@ class HomePresenter(override val view: HomeContract.View?) : HomeContract.Presen
 
     override fun getPhoneNumber() {
         val numberWithoutCountryCode =
-            PhoneNumberUtils.formatNumber(FirebaseAuthHelper.userAuth.currentUser?.phoneNumber, "55")
+            PhoneNumberUtils.formatNumber(FirebaseHelper.userAuth.currentUser?.phoneNumber, "55")
                 .removePrefix("+55")
                 .removePrefix(" ")
         view?.setDescription(numberWithoutCountryCode)
     }
 
     override fun signOut() {
-        FirebaseAuthHelper.signOut()
+        FirebaseHelper.signOut()
         view?.goToSplash()
     }
 
     override fun createListenerForOrderList() {
-        FirebaseAuthHelper.getUserId()?.let { uid ->
+        FirebaseHelper.getUserId()?.let { uid ->
             view?.startSkeletonOrderList()
             view?.startSkeletonBudget()
             val listener = object : ValueEventListener {
