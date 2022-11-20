@@ -15,6 +15,8 @@ android {
         versionName "1.0"
         resConfigs "pt"
         multiDexEnabled true
+
+        resValue "string", "pspdfkit_license_key", "\"YOUR_LICENSE_KEY_GOES_HERE\""
     }
 
     buildFeatures {
@@ -99,5 +101,8 @@ dependencies {
     implementation("com.redmadrobot:input-mask-android:$input_mask")
 
     def skeleton_layout = "4.0.0"
-    implementation ("com.faltenreich:skeletonlayout:$skeleton_layout")
+    implementation("com.faltenreich:skeletonlayout:$skeleton_layout")
+
+    def pdf_kit = ""
+    implementation 'com.pspdfkit:pspdfkit:8.4.0'
 }

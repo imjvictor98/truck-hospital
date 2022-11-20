@@ -9,7 +9,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.TruckHospital">
 
@@ -50,6 +50,15 @@
             android:exported="false"
             android:parentActivityName=".modules.ui.main.MainActivity"
             android:theme="@style/Theme.TruckHospital.NoActionBar" />
+        <activity
+            android:name=".modules.ui.pdf.review.PDFReviewActivity"
+            android:exported="false"
+            android:parentActivityName=".modules.ui.main.MainActivity"
+            android:theme="@style/Theme.TruckHospital.NoActionBar" />
+
+        <activity
+            android:name="com.pspdfkit.ui.PdfActivity"
+            android:windowSoftInputMode="adjustNothing" />
     </application>
 
 </manifest>
